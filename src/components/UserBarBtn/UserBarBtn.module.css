@@ -1,0 +1,104 @@
+.dropdown {
+  display: inline-flex;
+  padding: 6px 16px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 30px;
+  background: #171719;
+  cursor: pointer;
+}
+
+.avatar {
+  border-radius: 40px;
+  background: lightgray 50% / cover no-repeat, #e0e0e0;
+}
+
+.avatarName {
+  width: 105px; 
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.dropdown:hover .avatarName {
+  color: rgba(250, 250, 250, 0.4);
+}
+
+.openArrow {
+  transition: all 0.3s;
+  width: 20px;
+  height: 20px;
+}
+
+.closeArrow {
+  transition: all 0.3s;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+}
+
+.dropdownOpen {
+  visibility: visible;
+  height: auto;
+  opacity: 1;
+  margin-top: 8px;
+  transition: all 0.3s ease;
+  /* transition: height 0.7s, opacity 0.3s, visibility 0.4s ease; */
+}
+
+.dropdownClose {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0px;
+  transition: all 0.3s ease;
+}
+
+.dropdownList {
+  width: 217px;
+  height: 86px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  border: 1px solid rgba(250, 250, 250, 0.1);
+  background: #0c0d0d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+}
+
+.dropdownItem {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.dropdownItem:hover .dropdownIcon path {
+  stroke: #838383;
+}
+
+.dropdownItem:hover .dropdownParagraph {
+  color: #838383;
+}
+
+.dropdownIcon path {
+  stroke: #fafafa;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.dropdownParagraph {
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

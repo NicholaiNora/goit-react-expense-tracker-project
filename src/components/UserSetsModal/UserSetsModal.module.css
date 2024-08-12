@@ -1,0 +1,160 @@
+.modal {
+  width: 500px;
+  height: 477px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  padding: 40px 40px 60px;
+  border: 1px solid rgba(250, 250, 250, 0.1);
+  background: #171719;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.title {
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+}
+
+.closeButton {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.closeButton:hover path {
+  stroke: #0EF387;
+}
+
+.avatarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  background: lightgray 50% / cover no-repeat, #e0e0e0;
+}
+
+.avatarButtonContainer {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload,
+.remove {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #29292b;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.upload:hover,
+.remove:hover {
+  color: rgba(250, 250, 250, 0.5);
+}
+
+.form {
+  width: 420px;
+  display: flex;
+  gap: 20px 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  display: flex;
+  width: 290px;
+  height: 48px;
+  padding: 12px 18px;
+  align-items: center;
+  gap: 10px;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  border-radius: 12px;
+  border-color: rgba(250, 250, 250, 0.4);
+  border-width: 1px;
+  border-style: solid;
+  background: #171719;
+  box-shadow: none;
+  outline: none;
+}
+
+.input:hover,
+input:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: #0ef387;
+}
+
+.save {
+  display: inline-flex;
+  padding: 14px 192px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #0ef387;
+  color: #0c0d0d;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+
+.save:hover,
+.save:focus {
+  background: #0ebb69;
+}

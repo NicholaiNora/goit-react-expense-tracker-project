@@ -1,0 +1,67 @@
+.burgerMenuContainer {
+  width: 385px;
+  height: 1024px;
+  flex-shrink: 0;
+  background: #0ef387;
+  padding: 18px 32px;
+  position: relative;
+}
+
+.topContainer {
+  display: flex;
+  gap: 77px;
+}
+
+.closeButton {
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+  position: absolute;
+  right: 32px;
+  top: 32.5px;
+  cursor: pointer;
+}
+
+.closeButton:hover path {
+  fill: #fafafa;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.burgerMenuBtn {
+  display: flex;
+  width: 125px;
+  padding: 12px 21px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background: #0c0d0d;
+  border: 1px solid #0c0d0d;
+  outline: none;
+  box-shadow: none;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  cursor: pointer;
+}
+
+.burgerMenuBtn:hover {
+  background: transparent;
+  color: #0c0d0d;
+  border-color: rgba(12, 13, 13, 0.4);
+}
