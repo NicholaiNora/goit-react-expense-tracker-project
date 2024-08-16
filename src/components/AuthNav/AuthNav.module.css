@@ -1,0 +1,36 @@
+.authNavContainer {
+  background: #0c0d0d;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.authNavBtn {
+  width: 145px;
+  display: inline-flex;
+  padding: 14px 44px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #0ef387;
+  border: 1px solid #0ef387;
+  color: #0c0d0d;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+}
+
+.authNavBtn:hover {
+    color:  #FAFAFA;
+    background: transparent;
+    border: 1px solid rgba(250, 250, 250, 0.40);
+
+}

@@ -1,12 +1,17 @@
-import React from 'react'
-import BgImage from "../images/Rectangle_1.jpg"
+import React from "react";
+import BgImage from "../images/BgImageWrapper.jpg";
+import DecorationTab from "../DecorationTab/DecorationTab";
+import css from "./BgImageWrapper.module.css";
 
 function BgImageWrapper() {
   return (
-    <>
-      <img src={BgImage} alt="Backround"></img>
-    </>
-  )
+    <div className={css.imageContainer}>
+      <div className={css.backgroundImage}>
+        <img src={BgImage} alt="Backround" className={css.image}></img>
+      </div>
+      <DecorationTab className={css.decorationTab} />
+    </div>
+  );
 }
 
-export default BgImageWrapper
+export default BgImageWrapper;

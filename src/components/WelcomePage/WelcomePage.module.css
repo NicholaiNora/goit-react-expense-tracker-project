@@ -1,0 +1,59 @@
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 166px;
+  }
+  
+  .contentWrapper {
+    display: inline-flex;
+    flex-direction: column;
+    width: 575px;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  
+  .textContainer span {
+    color: rgba(250, 250, 250, 0.4);
+    font-family: "Suisse Intl";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .textContainer h1 {
+    color: #fafafa;
+    font-family: "Suisse Intl";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.12px;
+    margin-bottom: 20px;
+  }
+  
+  .textContainer h1 span {
+    color: #0ef387;
+    font-family: "Suisse Intl";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.12px;
+    text-decoration-line: underline;
+  }
+  
+  .textContainer p {
+    width: 533px;
+    color: rgba(250, 250, 250, 0.4);
+    font-family: "Suisse Intl";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+  
