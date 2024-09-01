@@ -1,0 +1,124 @@
+.textContainer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.title {
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.12px;
+}
+
+.paragraph {
+  width: 533px;
+  color: rgba(250, 250, 250, 0.4);
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.inputWrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputContainer {
+  display: inline-flex;
+  padding: 12px 18px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(250, 250, 250, 0.2);
+}
+
+.inputContainer:hover, .inputContainer:has(> input:focus) {
+  border-color: #0ef387;
+}
+
+.input {
+  width: 100%;
+  color: rgba(250, 250, 250, 0.4);
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.buttonWrapper {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.button {
+  width: 145px;
+  display: inline-flex;
+  padding: 14px 44px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #0ef387;
+  border: 1px solid #0ef387;
+  color: #0c0d0d;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+}
+
+.button:hover {
+  color: #fafafa;
+  background: transparent;
+  border: 1px solid rgba(250, 250, 250, 0.4);
+}
+
+.span {
+  color: rgba(250, 250, 250, 0.6);
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "Suisse Intl";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+}
+
+.link {
+  color: #fafafa;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "Suisse Intl";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration-line: underline;
+}

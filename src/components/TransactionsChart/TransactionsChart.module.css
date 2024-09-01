@@ -1,0 +1,70 @@
+.container {
+  width: 630px;
+  height: 302px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: #171719;
+  padding: 40px;
+}
+
+.paragraph {
+  color: rgba(250, 250, 250, 0.5);
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 38px;
+}
+
+.chart {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.chart p {
+  color: #fafafa;
+  font-family: "Suisse Int'l";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.chartContainer {
+  display: inline-flex;
+
+  gap: 41px;
+}
+
+.chartList {
+  width: 191px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.chartItem {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chartParagraph {
+  color: rgba(250, 250, 250, 0.5);
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.chartSpan {
+  display: inline-block;
+  color: #fafafa;
+  font-family: "Suisse Int'l";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
