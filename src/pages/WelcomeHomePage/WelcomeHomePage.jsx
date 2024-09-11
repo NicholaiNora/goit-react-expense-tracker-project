@@ -6,12 +6,8 @@ import WelcomePage from "../../components/WelcomePage/WelcomePage";
 
 export default function WelcomeHomePage() {
   return (
-    <section className={css.container}>
-      <Logo />
-      <div className={css.pageContainer}>
-        <BgImageWrapper />
-        <WelcomePage />
-      </div>
-    </section>
+    <div>
+      <WelcomePage />
+    </div>
   );
 }

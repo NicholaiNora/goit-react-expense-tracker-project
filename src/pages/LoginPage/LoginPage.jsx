@@ -6,12 +6,8 @@ import AuthForm from "../../components/AuthForm - SignIn/AuthForm";
 
 export default function LoginPage() {
   return (
-    <section className={css.container}>
-      <Logo />
-      <div className={css.pageContainer}>
-        <BgImageWrapper />
-        <AuthForm />
-      </div>
-    </section>
+    <div>
+      <AuthForm />
+    </div>
   );
 }

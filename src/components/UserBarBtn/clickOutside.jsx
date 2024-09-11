@@ -8,7 +8,6 @@ function useClickOutside(ref, onClickOutside) {
      * Invoke Function onClick outside of element
      */
     function handleClickOutside(event) {
-      console.log(ref.current);
       if (ref.current && !ref.current.contains(event.target)) {
         onClickOutside();
       }

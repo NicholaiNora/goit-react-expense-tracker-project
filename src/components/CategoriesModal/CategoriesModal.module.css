@@ -1,0 +1,167 @@
+.modal {
+  width: 500px;
+  max-height: 461px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  padding: 40px 40px;
+  border: 1px solid rgba(250, 250, 250, 0.1);
+  background: #171719;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+  margin-bottom: 20px;
+}
+
+.closeButton {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.closeButton:hover path {
+  stroke: #0ef387;
+}
+
+.paragraph {
+  color: rgba(250, 250, 250, 0.4);
+  font-family: "Suisse Intl";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.form {
+  display: inline-flex;
+  width: 420px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.form p {
+  color: #0ef387;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.inputContainer {
+  display: inline-flex;
+}
+
+.form input {
+  width: 305px;
+  display: flex;
+  padding: 12px 18px 12px 18px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  background-color: transparent;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.form button {
+  display: flex;
+  padding: 14px 44px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #0c0d0d;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  border-radius: 12px;
+  background: #0ef387;
+  border: none;
+}
+
+.categoryList {
+  width: 100%;
+  height: 172px;
+  overflow: auto;
+  margin-bottom: 20px;  
+}
+
+.categoryItem {
+  width: 100%;
+  height: 43px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoryName {
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.iconList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.iconItem {
+  cursor:pointer;
+
+}
+
+.iconItem:hover path{
+  stroke: #fafafa;
+}
+
+.editForm {
+  display: flex;
+ 
+}

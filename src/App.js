@@ -5,14 +5,25 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsChart from "./components/TransactionsChart/TransactionsChart";
 import TransactionForm from "./components/TransactionForm/TransactionForm";
+import SharedLayout from "./components/SharedLayout - Non-Auth/SharedLayout";
+import SharedLayoutAuth from "./components/SharedLayout - Auth/SharedLayoutAuth";
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   return (
     <div className="App container">
+      {/* <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<WelcomeHomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
+      </Routes> */}
+      
       <Routes>
-        <Route path="/" element={<WelcomeHomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<SharedLayoutAuth />}>
+          <Route index element={<HomePage />} />
+        </Route>
       </Routes>
     </div>
   );

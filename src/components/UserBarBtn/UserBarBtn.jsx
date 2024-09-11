@@ -27,7 +27,7 @@ function UserBarBtn() {
   };
 
   return (
-    <div ref={wrapperRef}>
+    <div className={css.wrapper} ref={wrapperRef}>
       <div className={css.dropdown} onClick={handleClick}>
         <img src={avatar} alt="Profile" className={css.avatar} />
         <p className={css.avatarName}>Alex Rybachok</p>

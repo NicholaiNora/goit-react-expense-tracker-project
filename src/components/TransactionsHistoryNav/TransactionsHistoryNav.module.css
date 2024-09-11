@@ -1,0 +1,28 @@
+.list {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.item button {
+  display: flex;
+  min-width: 125px;
+  padding: 12px 21px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  border-radius: 30px;
+  background-color: transparent;
+  border: 1px solid rgba(250, 250, 250, 0.4);
+}
+
+button:hover {
+  border: 1px solid #0ef387;
+}

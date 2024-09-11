@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import css from "./TransactionForm.module.css";
+import CategoriesModal from "../CategoriesModal/CategoriesModal";
 function TransactionForm() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -51,7 +61,9 @@ function TransactionForm() {
             id="category"
             name="category"
             placeholder="Different Category"
+            onClick={handleOpenModal}
           />
+          <CategoriesModal handleCloseModal={handleCloseModal} isOpen={showModal} />
         </div>
         <div className={css.amountContainer}>
           <p htmlFor="amount">Sum</p>

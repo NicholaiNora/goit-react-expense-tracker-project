@@ -53,11 +53,11 @@
   position: relative;
   visibility: hidden;
   opacity: 0;
-  max-height: 0px;
   transition: all 0.3s ease;
 }
 
 .dropdownList {
+  position: absolute;
   width: 217px;
   height: 86px;
   flex-shrink: 0;
@@ -79,11 +79,11 @@
   cursor: pointer;
 }
 
-.dropdownItem:hover .dropdownIcon path {
+.dropdownItem:hover .dropdownIcon path, .dropdownItem:active .dropdownIcon path{
   stroke: #838383;
 }
 
-.dropdownItem:hover .dropdownParagraph {
+.dropdownItem:hover .dropdownParagraph, .dropdownItem:active .dropdownParagraph  {
   color: #838383;
 }
 
@@ -102,3 +102,5 @@
   font-weight: 400;
   line-height: normal;
 }
+
+.wrapper {max-height: 56px;}
