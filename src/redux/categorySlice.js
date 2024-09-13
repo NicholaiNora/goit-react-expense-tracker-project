@@ -25,14 +25,17 @@ const categorySlice = createSlice({
       },
     },
     deleteTask(state, action) {
-      const index = state.findIndex(
+      const newCategories = [...state.categories];
+      const index = newCategories.findIndex(
         (category) => category.id === action.payload
       );
-      state.splice(index, 1);
+      console.log(state.categories);
+      state.categories.splice(index, 1);
     },
 
     updateTask(state, action) {
-      for (const category of state.categories) {
+      const newCategories = [...state.categories];
+      for (const category of newCategories) {
         if (category.isEditing === true) {
           category.text = action.payload;
           category.isEditing = false;
@@ -52,14 +55,14 @@ const categorySlice = createSlice({
       );
       console.log(index1);
 
-      if (newCategories.some((e) => e.isEditing === true)) {
-        if (index1 !== index) {
-          const categ = newCategories.find(
-            (category) => category.isEditing === true
-          );
-          categ.isEditing = false;
-        }
-      }
+      // if (newCategories.some((e) => e.isEditing === true)) {
+      //   if (index1 !== index) {
+      //     const categ = newCategories.find(
+      //       (category) => category.isEditing === true
+      //     );
+      //     categ.isEditing = false;
+      //   }
+      // }
 
       for (const category of newCategories) {
         if (category.id === id) {
@@ -69,39 +72,32 @@ const categorySlice = createSlice({
       }
     },
 
-    closeModal(state, action) {
-      // console.log(initialState.categories);
+    closeModal(state) {
         const newCategories = [...state.categories];
-      //   const categ = state.categories.find(
-      //     (category) => category.isEditing === true
-      //   );
-      //   console.log(action.payload.text);
-      //   if (categ.text === action.payload.text)console.log("still equal");
-      // },
-      // const newState = Object.assign({}, prevState, action.payload);
-      // console.log(newState);
-      // console.log(prevState);
+
       if (newCategories.some((e) => e.isEditing === true)) {
         const categ = newCategories.find(
           (category) => category.isEditing === true
         );
-        if (categ.text === action.payload.text) categ.isEditing = false;
-        else {
-          console.log("dont close");
-        }
+        categ.isEditing = false;
       }
       return;
     },
-    // if(newCategories[0].text === action.payload) {console.log(action.payload);}
-    changeInput(state, action) {
+
+    saveTask(state, action) {
+      // const newCategories = [...state.categories];
+      // const index = newCategories.findIndex(
+      //   (category) => category.id === action.payload
+      // );
+      // console.log(state.categories[index]);
       const newCategories = [...state.categories];
+      console.log(action.payload)
       for (const category of newCategories) {
-        if (category.isEditing === true) {
-          category.text = action.payload;
-          break;
+        if (category.id === action.payload) {
+          
         }
       }
-    },
+    }
   },
 });
 
@@ -111,6 +107,6 @@ export const {
   updateTask,
   toggleEdit,
   closeModal,
-  changeInput,
+  saveTask
 } = categorySlice.actions;
 export const categoryReducer = categorySlice.reducer;

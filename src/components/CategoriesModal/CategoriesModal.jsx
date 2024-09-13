@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import ReactModal from "react-modal";
 import { ReactComponent as CloseButton } from "../images/closeButton.svg";
 import { ReactComponent as Check } from "../images/check.svg";
@@ -8,14 +8,15 @@ import css from "./CategoriesModal.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTask,
+  deleteTask,
   toggleEdit,
   updateTask,
   closeModal,
-  changeInput,
 } from "../../redux/categorySlice";
 import { getCategory } from "../../redux/selectors";
+import useClickOutside from "../UserBarBtn/clickOutside";
 
-function CategoriesModal({ handleCloseModal, isOpen }) {
+function CategoriesModal({ handleCloseModal, isOpen, handleCategory}) {
   const dispatch = useDispatch();
   const categories = useSelector(getCategory);
 
@@ -27,32 +28,26 @@ function CategoriesModal({ handleCloseModal, isOpen }) {
     form.reset();
   };
 
-  const handleClick = (id) => {
+  const handleEdit = (id) => {
     dispatch(toggleEdit(id));
   };
 
-  const handleSave = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    dispatch(updateTask(form.elements.editText.value));
-    form.reset();
+  const afterOpenModal = () => {
+    dispatch(closeModal());
   };
 
-  const handleChange = (e) => {
-    dispatch(changeInput(e.target.value));
+  const handleDelete = (id) => {
+    dispatch(deleteTask(id));
   };
 
-  // const afterOpenModal = () => {
-  //   dispatch(closeModal());
+  const handleCheck= (text) => {
+    handleCategory(text);
+    handleCloseModal();
+  }
+
+  // const handleBlur = (category) => {
+  //   dispatch(closeModal(category));
   // };
-
-  const handleFocus = (e) => {
-    e.target.select();
-  };
-
-  const handleBlur = (category) => {
-    dispatch(closeModal(category));
-  };
 
   return (
     <ReactModal
@@ -64,7 +59,7 @@ function CategoriesModal({ handleCloseModal, isOpen }) {
       ariaHideApp={false}
       isOpen={isOpen}
       className={css.modal}
-      // onAfterOpen={afterOpenModal}
+      onAfterOpen={afterOpenModal}
       overlayClassName={css.overlay}
     >
       <div className={css.wrapper}>
@@ -76,34 +71,27 @@ function CategoriesModal({ handleCloseModal, isOpen }) {
             {categories.map((category) => (
               <li className={css.categoryItem} key={category.id}>
                 {category.isEditing ? (
-                  <>
-                    <form onSubmit={handleSave}>
-                      <input
-                        type="text"
-                        name="editText"
-                        value={category.text}
-                        onChange={handleChange}
-                        autoFocus
-                        onFocus={handleFocus}
-                        onBlur={() => handleBlur(category)}
-                      />
-                      <button type="submit">save</button>
-                    </form>
-                  </>
+                  <Form category={category} />
                 ) : (
                   <>
                     <p className={css.categoryName}>{category.text}</p>
                     <ul className={css.iconList}>
-                      <li className={css.iconItem}>
+                      <li
+                        className={css.iconItem}
+                        onClick={() => handleCheck(category.text)}
+                      >
                         <Check />
                       </li>
                       <li
                         className={css.iconItem}
-                        onClick={() => handleClick(category.id)}
+                        onClick={() => handleEdit(category.id)}
                       >
                         <Edit />
                       </li>
-                      <li className={css.iconItem}>
+                      <li
+                        className={css.iconItem}
+                        onClick={() => handleDelete(category.id)}
+                      >
                         <Trash />
                       </li>
                     </ul>
@@ -122,6 +110,50 @@ function CategoriesModal({ handleCloseModal, isOpen }) {
         </form>
       </div>
     </ReactModal>
+  );
+}
+
+function Form({ category }) {
+  const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSave = (event) => {
+    event.preventDefault();
+
+    if (inputValue === "") {
+      dispatch(updateTask(category.text));
+    }
+    const form = event.target;
+    dispatch(updateTask(inputValue));
+    form.reset();
+  };
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleFocus = (e) => {
+    e.target.select();
+  };
+
+  const wrapperRef = useRef();
+  useClickOutside(wrapperRef, () => {
+    dispatch(closeModal());
+  });
+  return (
+    <>
+      <form onSubmit={handleSave} ref={wrapperRef}>
+        <input
+          type="text"
+          name="editText"
+          placeholder={category.text}
+          onChange={handleChange}
+          autoFocus
+          onFocus={handleFocus}
+        />
+        <button type="submit">save</button>
+      </form>
+    </>
   );
 }
 

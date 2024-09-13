@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import css from "./TransactionForm.module.css";
 import CategoriesModal from "../CategoriesModal/CategoriesModal";
+import { useSelector } from "react-redux"
+import { getCategory } from "../../redux/selectors";
 function TransactionForm() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [category, setCategory] = useState("");
 
+  const handleCategory = (text) => {
+  setCategory(text)
+  }
+  
   const handleOpenModal = () => {
     setShowModal(true);
   };
@@ -62,8 +69,9 @@ function TransactionForm() {
             name="category"
             placeholder="Different Category"
             onClick={handleOpenModal}
+            value={category}
           />
-          <CategoriesModal handleCloseModal={handleCloseModal} isOpen={showModal} />
+          <CategoriesModal handleCloseModal={handleCloseModal} isOpen={showModal} handleCategory={handleCategory} />
         </div>
         <div className={css.amountContainer}>
           <p htmlFor="amount">Sum</p>
