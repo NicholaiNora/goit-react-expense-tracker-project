@@ -1,0 +1,224 @@
+.wrapper {
+  padding: 60px 100px;
+}
+
+.header {
+  display: inline-flex;
+  gap: 94px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.title {
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.76px;
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  width: 516px;
+  color: rgba(250, 250, 250, 0.4);
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.form {
+  display: inline-flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 20px 40px;
+}
+
+.searchContainer {
+  width: 254px;
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  display: inline-flex;
+  padding: 15px 80px 15px 30px;
+  align-items: center;
+  gap: 30px;
+  border-radius: 30px;
+  background-color: #0c0d0d;
+  border: 1px solid #0c0d0d;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.searchInput::placeholder {
+  color: rgba(250, 250, 250, 0.4);
+}
+
+.find {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}
+
+.dateContainer input {
+  display: inline-flex;
+  padding: 15px 30px;
+  align-items: center;
+  gap: 15px;
+  border-radius: 30px;
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  background-color: #0c0d0d;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.placeholder {
+  color: rgba(250, 250, 250, 0.4);
+}
+
+.hasDate {
+  color: #fafafa;
+}
+
+.dateContainer input::-webkit-calendar-picker-indicator {
+  filter: invert(97%) sepia(34%) saturate(3539%) hue-rotate(71deg)
+    brightness(94%) contrast(103%);
+}
+
+.dateContainer input:focus,
+.dateContainer input:hover,
+.searchContainer input:focus,
+.searchContainer input:hover {
+  outline: none;
+  border-color: #0ef387;
+}
+
+.tableWrap {
+  width: 1240px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: #171719;
+}
+
+.tableContainer {
+  width: 1240px;
+  height: 349px;
+}
+
+.table {
+  width: 100%;
+  /* border-collapse: collapse; */
+  border-spacing: 0;
+}
+
+thead {
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(250, 250, 250, 0.4);
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* even columns width , fix width of table too*/
+}
+
+tbody {
+  display: block;
+  height: 290px;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  overflow-y: auto;
+}
+
+th {
+  padding: 20px 40px;
+}
+
+td {
+  padding: 10px 40px;
+}
+
+.tableButtonList {
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tableButtonItem {
+  width: 118px;
+  position: relative;
+}
+
+.editButton {
+  width: 100%;
+  height: 47px;
+  text-align: right;
+  padding: 14px 32px;
+  border-radius: 40px;
+  background: #0ef387;
+  color: #0c0d0d;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  border: 1px solid #0ef387;
+  outline: none;
+  cursor: pointer;
+}
+
+.editButton:hover {
+  background: #0ebb69;
+}
+
+.tableButtonItem img {
+  position: absolute;
+  top: 14px;
+  left: 32px;
+}
+
+.deleteButton {
+  display: flex;
+  padding: 14px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #0c0d0d;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  border: 1px solid rgba(250, 250, 250, 0.4);
+  outline: none;
+  cursor: pointer;
+}

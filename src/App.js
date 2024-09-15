@@ -8,6 +8,8 @@ import TransactionForm from "./components/TransactionForm/TransactionForm";
 import SharedLayout from "./components/SharedLayout - Non-Auth/SharedLayout";
 import SharedLayoutAuth from "./components/SharedLayout - Auth/SharedLayoutAuth";
 import HomePage from "./pages/HomePage/HomePage";
+import ExpensePage from "./pages/ExpensePage/ExpensePage";
+import IncomePage from "./pages/IncomePage/IncomePage";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayoutAuth />}>
           <Route index element={<HomePage />} />
+          <Route path="/expense" element={<ExpensePage />} />
+          <Route path="/income" element={<IncomePage />} />
         </Route>
       </Routes>
     </div>

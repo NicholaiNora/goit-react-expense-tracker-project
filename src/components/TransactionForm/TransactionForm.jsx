@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import css from "./TransactionForm.module.css";
 import CategoriesModal from "../CategoriesModal/CategoriesModal";
-import { useSelector } from "react-redux"
-import { getCategory } from "../../redux/selectors";
+
 function TransactionForm() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState("");
+  const [transaction, setTransaction] = useState("expense");
 
   const handleCategory = (text) => {
-  setCategory(text)
-  }
-  
+    setCategory(text);
+  };
+
   const handleOpenModal = () => {
     setShowModal(true);
   };
@@ -21,24 +21,45 @@ function TransactionForm() {
     setShowModal(false);
   };
 
+  const handleRadioChange = (e) => {
+    console.log(e.target.value);
+    setTransaction(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.currentTarget);
+    const formData = new FormData(e.currentTarget);
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+  }
+
   return (
     <>
-      <form className={css.form}>
-        <ul className={css.radioList}>
-          <li className={css.radioItem}>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <div className={css.radioList} onChange={handleRadioChange}>
+          <label>
             <input
               type="radio"
               id="expense"
               name="transaction"
               value="expense"
+              defaultChecked={transaction === "expense"}
             />
-            <label htmlFor="expense">Expense</label>
-          </li>
-          <li className={css.radioItem}>
-            <input type="radio" id="income" name="transaction" value="income" />
-            <label htmlFor="income">Income</label>
-          </li>
-        </ul>
+            Expense
+          </label>
+          <label>
+            <input
+              type="radio"
+              id="income"
+              name="transaction"
+              value="income"
+              defaultChecked={transaction === "income"}
+            />
+            Income
+          </label>
+        </div>
         <div className={css.datetimeContainer}>
           <div className={css.dateContainer}>
             <p htmlFor="date">Date</p>
@@ -70,8 +91,14 @@ function TransactionForm() {
             placeholder="Different Category"
             onClick={handleOpenModal}
             value={category}
+            readOnly
           />
-          <CategoriesModal handleCloseModal={handleCloseModal} isOpen={showModal} handleCategory={handleCategory} />
+          <CategoriesModal
+            handleCloseModal={handleCloseModal}
+            isOpen={showModal}
+            handleCategory={handleCategory}
+            transaction={transaction}
+          />
         </div>
         <div className={css.amountContainer}>
           <p htmlFor="amount">Sum</p>
@@ -87,7 +114,13 @@ function TransactionForm() {
         </div>
         <div className={css.commentContainer}>
           <p htmlFor="comment">Comment</p>
-          <textarea id="comment" name="comment" rows="" cols="" placeholder="Enter the text"></textarea>
+          <textarea
+            id="comment"
+            name="comment"
+            rows=""
+            cols=""
+            placeholder="Enter the text"
+          ></textarea>
         </div>
         <button type="submit" className={css.button}>
           Add

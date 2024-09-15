@@ -9,20 +9,17 @@
 
 .radioList {
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   gap: 20px;
   margin-bottom: 20px;
+  color: #fafafa;
 }
 
-.radioItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
 
-.radioItem input {
+.radioList input {
   accent-color: rgba(77, 194, 116, 1);
+  margin-right: 8px;  
 }
 
 .radioItem label {
@@ -150,7 +147,8 @@
 }
 
 .categoryContainer input::placeholder,
-.amountContainer input::placeholder, .commentContainer textarea::placeholder {
+.amountContainer input::placeholder,
+.commentContainer textarea::placeholder {
   color: rgba(250, 250, 250, 0.4);
   font-family: "Suisse Intl";
   font-size: 16px;
@@ -200,7 +198,7 @@ input::-webkit-inner-spin-button {
   padding: 12px 18px 24px 18px;
   align-items: center;
   gap: 10px;
-  color: #fafafa; 
+  color: #fafafa;
   border-radius: 12px;
   border: 1px solid rgba(250, 250, 250, 0.2);
   background-color: transparent;
@@ -236,7 +234,6 @@ textarea {
   outline: none;
   border: none;
 }
-
 
 .button:hover,
 .button:focus {

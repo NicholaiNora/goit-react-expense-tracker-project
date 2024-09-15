@@ -16,7 +16,7 @@ import {
 import { getCategory } from "../../redux/selectors";
 import useClickOutside from "../UserBarBtn/clickOutside";
 
-function CategoriesModal({ handleCloseModal, isOpen, handleCategory}) {
+function CategoriesModal({ handleCloseModal, isOpen, handleCategory, transaction}) {
   const dispatch = useDispatch();
   const categories = useSelector(getCategory);
 
@@ -64,7 +64,7 @@ function CategoriesModal({ handleCloseModal, isOpen, handleCategory}) {
     >
       <div className={css.wrapper}>
         <div>
-          <h2 className={css.title}>Expenses</h2>
+          <h2 className={css.title}>{transaction}</h2>
           <CloseButton className={css.closeButton} onClick={handleCloseModal} />
           <p className={css.paragraph}>All Category</p>
           <ul className={css.categoryList}>
