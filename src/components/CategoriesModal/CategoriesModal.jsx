@@ -22,6 +22,7 @@ function CategoriesModal({ handleCloseModal, isOpen, handleCategory, transaction
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     const form = event.target;
     console.log(form.elements.category.value);
     dispatch(addTask(form.elements.category.value));

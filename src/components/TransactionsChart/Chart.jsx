@@ -1,23 +1,32 @@
 import { Doughnut } from "react-chartjs-2";
-import {Chart, ArcElement} from 'chart.js'
+import { Chart, ArcElement } from "chart.js";
 Chart.register(ArcElement);
 
-const data = {
-  datasets: [
-    {
-      data: [45, 25, 20, 10],
-      backgroundColor: ["#0EBB69", "#0EF387", "#FAFAFA", "#29292B"],
-      display: true,
-      borderColor: "#D1D6DC",
-    },
-  ],
-};
+// const getRandomColor = () => {
+//   var letters = '0123456789ABCDEF';
+//   var color = '#';
+//   for (var i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)];
+//   }
+//   return color;
+// }
 
-const DougnutChart = () => {
+const DougnutChart = ({ color, occurences}) => {
+  console.log(Object.values(occurences));
+
   return (
     <div>
       <Doughnut
-        data={data}
+        data={{
+          datasets: [
+            {
+              data: Object.values(occurences),
+              backgroundColor: color,
+              display: true,
+              borderColor: "#D1D6DC",
+            },
+          ],
+        }}
         options={{
           plugins: {
             legend: {
@@ -44,7 +53,7 @@ const DougnutChart = () => {
           textAlign: "center",
         }}
       >
-        <p>100%</p>
+        {Object.values(occurences).length > 0 && <p> 100% </p>}
       </div>
     </div>
   );

@@ -1,8 +1,14 @@
 import React from "react";
 import css from "./TransactionsTotalAmount.module.css";
 import arrow from "../images/arrow.svg";
+import { useSelector } from "react-redux";
+import { getExpenses, getIncome } from "../../redux/selectors";
 
 function TransactionsTotalAmount() {
+  const expenses = useSelector(getExpenses);
+  console.log(expenses)
+  const incomes = useSelector(getIncome);
+  console.log(incomes)
   return (
     <div className={css.wrapper}>
       <div className={css.container}>
@@ -12,7 +18,7 @@ function TransactionsTotalAmount() {
         <div className={css.infoContainer}>
           <p className={css.paragraph}>Total Income</p>
           <div className={css.balanceContainer}>
-            <span className={css.balance}>$632.000</span>
+            <span className={css.balance}>${incomes.reduce((n, {amount}) => n + Number(amount), 0).toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -23,7 +29,7 @@ function TransactionsTotalAmount() {
         <div className={css.infoContainer}>
           <p className={css.paragraph}>Total Expense</p>
           <div className={css.balanceContainer}>
-            <span className={css.balance}>$632.000</span>
+            <span className={css.balance}>${expenses.reduce((n, { amount }) => n + Number(amount), 0).toFixed(2)}</span>
           </div>
         </div>
       </div>

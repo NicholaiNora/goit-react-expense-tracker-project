@@ -31,8 +31,8 @@
   line-height: normal;
 }
 .chartContainer {
-  display: inline-flex;
-
+  display: flex;
+  height: 150px;
   gap: 41px;
 }
 
@@ -42,12 +42,21 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
+  overflow: auto;
 }
 
 .chartItem {
   width: 100%;
+  height: 21px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.chartItem::before {
+  content:"\2022";
+  font-size: 3rem;
+  padding-bottom: 10px;
 }
 
 .chartParagraph {
@@ -57,6 +66,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
 }
 
 .chartSpan {
@@ -67,4 +77,5 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin-left: auto;
 }

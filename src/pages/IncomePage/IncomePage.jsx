@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import TransactionsTotalAmount from "../../components/TransactionsTotalAmount/TransactionsTotalAmount";
 import css from "./IncomePage.module.css";
 import find from "../../components/images/find.svg";
 import pen from "../../components/images/pen.svg";
 import trash from "../../components/images/delete.svg";
+import { getIncome } from "../../redux/selectors";
+import { useSelector } from "react-redux";
 
 export default function IncomePage() {
   const [date, setDate] = useState("");
+  const incomes = useSelector(getIncome);
   return (
     <div className={css.wrapper}>
       <div className={css.header}>
@@ -39,25 +42,23 @@ export default function IncomePage() {
           </div>
         </form>
         <div className={css.tableContainer}>
-          <table className={css.table}>
-            <thead>
-              <tr>
-                <th width="142px">Category</th>
-                <th width="182px">Comment</th>
-                <th width="191px">Date</th>
-                <th width="125.5px">Time</th>
-                <th width="170px">Sum</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Cinema</td>
-                <td>John Week 4</td>
-                <td>Sn, 3.03.2023</td>
-                <td>14:30</td>
-                <td>150 / UAH</td>
-                <td>
+          <div className={css.table}>
+            <div>Category</div>
+            <div>Comment</div>
+            <div>Date</div>
+            <div>Time</div>
+            <div>Sum</div>
+            <div>Actions</div>
+          </div>
+          <div className={css.tableData}>
+            {incomes.map((income) => (
+              <Fragment key={income.id}>
+                <div>{income.category}</div>
+                <div>{income.comment}</div>
+                <div>{income.date}</div>
+                <div>{income.time}</div>
+                <div>{income.amount}</div>
+                <div>
                   <ul className={css.tableButtonList}>
                     <li className={css.tableButtonItem}>
                       <button className={css.editButton}>
@@ -72,102 +73,10 @@ export default function IncomePage() {
                       </button>
                     </li>
                   </ul>
-                </td>
-              </tr>
-              <tr>
-                <td>Cinema</td>
-                <td>John Week 4</td>
-                <td>Sn, 3.03.2023</td>
-                <td>14:30</td>
-                <td>150 / UAH</td>
-                <td>
-                  <ul className={css.tableButtonList}>
-                    <li className={css.tableButtonItem}>
-                      <button className={css.editButton}>
-                        <img src={pen} alt="pen" />
-                        Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button className={css.deleteButton}>
-                        <img src={trash} alt="delete" />
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <td>Cinema</td>
-                <td>John Week 4</td>
-                <td>Sn, 3.03.2023</td>
-                <td>14:30</td>
-                <td>150 / UAH</td>
-                <td>
-                  <ul className={css.tableButtonList}>
-                    <li className={css.tableButtonItem}>
-                      <button className={css.editButton}>
-                        <img src={pen} alt="pen" />
-                        Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button className={css.deleteButton}>
-                        <img src={trash} alt="delete" />
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <td>Cinema</td>
-                <td>John Week 4</td>
-                <td>Sn, 3.03.2023</td>
-                <td>14:30</td>
-                <td>150 / UAH</td>
-                <td>
-                  <ul className={css.tableButtonList}>
-                    <li className={css.tableButtonItem}>
-                      <button className={css.editButton}>
-                        <img src={pen} alt="pen" />
-                        Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button className={css.deleteButton}>
-                        <img src={trash} alt="delete" />
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <td>Cinema</td>
-                <td>John Week 4</td>
-                <td>Sn, 3.03.2023</td>
-                <td>14:30</td>
-                <td>150 / UAH</td>
-                <td>
-                  <ul className={css.tableButtonList}>
-                    <li className={css.tableButtonItem}>
-                      <button className={css.editButton}>
-                        <img src={pen} alt="pen" />
-                        Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button className={css.deleteButton}>
-                        <img src={trash} alt="delete" />
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </div>
+              </Fragment>
+            ))}
+          </div>
         </div>
       </div>
     </div>

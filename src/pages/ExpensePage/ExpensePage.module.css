@@ -112,9 +112,11 @@
 
 .tableWrap {
   width: 1240px;
+  height: 439px;
   flex-shrink: 0;
   border-radius: 30px;
   background: #171719;
+  overflow: hidden;
 }
 
 .tableContainer {
@@ -123,43 +125,37 @@
 }
 
 .table {
-  width: 100%;
-  /* border-collapse: collapse; */
-  border-spacing: 0;
-}
-
-thead {
+  display: grid;
+  grid-template-columns: 15% 15% 15% 15% 15% auto;
+  width: 1240px;
+  height: 59px;
   flex-shrink: 0;
   background: rgba(0, 0, 0, 0.2);
+  padding: 20px 40px;
   color: rgba(250, 250, 250, 0.4);
   font-family: "Suisse Intl";
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  display: table;
-  width: 100%;
-  table-layout: fixed; /* even columns width , fix width of table too*/
 }
 
-tbody {
-  display: block;
+.tableData {
+  display: grid;
   height: 290px;
+  grid-template-columns: 15% 15% 15% 15% 15% auto;
+  grid-template-rows: 47px 47px 47px 47px;
+  padding: 20px 40px 20px 40px;
   color: #fafafa;
   font-family: "Suisse Intl";
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  align-items: center;
+  row-gap: 20px;
+  word-break: break-word;
   overflow-y: auto;
-}
-
-th {
-  padding: 20px 40px;
-}
-
-td {
-  padding: 10px 40px;
 }
 
 .tableButtonList {
