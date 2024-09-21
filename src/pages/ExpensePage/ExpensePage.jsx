@@ -1,15 +1,23 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import TransactionsTotalAmount from "../../components/TransactionsTotalAmount/TransactionsTotalAmount";
 import css from "./ExpensePage.module.css";
 import find from "../../components/images/find.svg";
 import pen from "../../components/images/pen.svg";
 import trash from "../../components/images/delete.svg";
-import { getExpenses } from "../../redux/selectors";
-import { useSelector } from "react-redux";
+import { getStatusFilter, getFilteredExpenses } from "../../redux/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter } from "../../redux/filterSlice";
 
 export default function ExpensePage() {
-  const [date, setDate] = useState("");
-  const expenses = useSelector(getExpenses);
+  const filter = useSelector(getStatusFilter);
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    dispatch(setFilter({ value, name }));
+  };
+
+  const filteredExpenses = useSelector(getFilteredExpenses);
   return (
     <div className={css.wrapper}>
       <div className={css.header}>
@@ -23,10 +31,13 @@ export default function ExpensePage() {
         <TransactionsTotalAmount />
       </div>
       <div className={css.tableWrap}>
-        <form className={css.form}>
+        <form className={css.form} onSubmit={(e) => e.preventDefault}>
           <div className={css.searchContainer}>
             <input
               type="text"
+              name="filter"
+              value={filter.text}
+              onChange={handleChange}
               placeholder="Search for anything.."
               className={css.searchInput}
             />
@@ -36,8 +47,9 @@ export default function ExpensePage() {
             <input
               type="date"
               name="date"
-              className={date ? css.hasDate : css.placeholder}
-              onChange={(e) => setDate(e.target.value)}
+              value={filter.date}
+              className={filter.date ? css.hasDate : css.placeholder}
+              onChange={handleChange}
             />
           </div>
         </form>
@@ -51,7 +63,7 @@ export default function ExpensePage() {
             <div>Actions</div>
           </div>
           <div className={css.tableData}>
-            {expenses.map((expense) => (
+            {filteredExpenses.map((expense) => (
               <Fragment key={expense.id}>
                 <div>{expense.category}</div>
                 <div>{expense.comment}</div>

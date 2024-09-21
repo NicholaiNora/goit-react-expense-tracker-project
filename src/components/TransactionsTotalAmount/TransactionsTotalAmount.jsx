@@ -2,12 +2,12 @@ import React from "react";
 import css from "./TransactionsTotalAmount.module.css";
 import arrow from "../images/arrow.svg";
 import { useSelector } from "react-redux";
-import { getExpenses, getIncome } from "../../redux/selectors";
+import { getExpenses, getIncomes } from "../../redux/selectors";
 
 function TransactionsTotalAmount() {
   const expenses = useSelector(getExpenses);
   console.log(expenses)
-  const incomes = useSelector(getIncome);
+  const incomes = useSelector(getIncomes);
   console.log(incomes)
   return (
     <div className={css.wrapper}>

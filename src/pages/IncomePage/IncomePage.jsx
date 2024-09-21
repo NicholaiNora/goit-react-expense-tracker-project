@@ -1,15 +1,23 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment} from "react";
 import TransactionsTotalAmount from "../../components/TransactionsTotalAmount/TransactionsTotalAmount";
 import css from "./IncomePage.module.css";
 import find from "../../components/images/find.svg";
 import pen from "../../components/images/pen.svg";
 import trash from "../../components/images/delete.svg";
-import { getIncome } from "../../redux/selectors";
-import { useSelector } from "react-redux";
+import { getFilteredIncomes, getStatusFilter } from "../../redux/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { setFilter } from "../../redux/filterSlice";
 
 export default function IncomePage() {
-  const [date, setDate] = useState("");
-  const incomes = useSelector(getIncome);
+  const filter = useSelector(getStatusFilter);
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    dispatch(setFilter({ value, name }));
+  };
+
+  const filteredIncomes = useSelector(getFilteredIncomes);
   return (
     <div className={css.wrapper}>
       <div className={css.header}>
@@ -23,11 +31,14 @@ export default function IncomePage() {
         <TransactionsTotalAmount />
       </div>
       <div className={css.tableWrap}>
-        <form className={css.form}>
+        <form className={css.form} onSubmit={(e) => e.preventDefault}>
           <div className={css.searchContainer}>
             <input
               type="text"
               placeholder="Search for anything.."
+              name="filter"
+              value={filter.text}
+              onChange={handleChange}
               className={css.searchInput}
             />
             <img src={find} alt="find" className={css.find} />
@@ -36,8 +47,9 @@ export default function IncomePage() {
             <input
               type="date"
               name="date"
-              className={date ? css.hasDate : css.placeholder}
-              onChange={(e) => setDate(e.target.value)}
+              value={filter.date}
+              className={filter.date ? css.hasDate : css.placeholder}
+              onChange={handleChange}
             />
           </div>
         </form>
@@ -51,7 +63,7 @@ export default function IncomePage() {
             <div>Actions</div>
           </div>
           <div className={css.tableData}>
-            {incomes.map((income) => (
+            {filteredIncomes.map((income) => (
               <Fragment key={income.id}>
                 <div>{income.category}</div>
                 <div>{income.comment}</div>
