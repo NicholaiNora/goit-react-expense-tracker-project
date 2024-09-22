@@ -1,53 +1,61 @@
 import React, { useState } from "react";
-import css from "./TransactionForm.module.css";
+import css from "./EditFormModal.module.css";
 import CategoriesModal from "../CategoriesModal/CategoriesModal";
 import { useDispatch } from "react-redux";
-import { addTask } from "../../redux/transactionsSlice";
+import { editTask } from "../../redux/transactionsSlice";
+import ReactModal from "react-modal";
+import { ReactComponent as CloseButton } from "../images/closeButton.svg";
+// import { getFindIdExpenses } from "../../redux/selectors";
 
-function TransactionForm() {
-  // const [date, setDate] = useState("");
-  // const [time, setTime] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  // const [category, setCategory] = useState("");
-  // const [transaction, setTransaction] = useState("expense");
-  const [formData, setFormData] = useState({ transaction: "expense", date: "", time: "", category: "", amount: "", comment: "" });
+function EditFormModal({
+  handleCloseModal,
+  modalIsOpen,
+  formValue,
+  setFormValue,
+}) {
+  const [inputShowModal, setInputShowModal] = useState(false);
+  // const findId = useSelector(getFindIdExpenses);
+  console.log(formValue);
+
   const dispatch = useDispatch();
 
   const handleCategory = (text) => {
-    setFormData({ ...formData, category: text });
+    setFormValue({ ...formValue, category: text });
   };
 
-  const handleOpenModal = () => {
-    setShowModal(true);
+  const OpenModal = () => {
+    setInputShowModal(true);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
+  const CloseModal = () => {
+    setInputShowModal(false);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  }
-
-  // const handleRadioChange = (e) => {
-  //   console.log(e.target.value);
-  //   setTransaction(e.target.value);
-  // };
+    setFormValue({ ...formValue, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const formData = new FormData(e.currentTarget);
-    // for (let [key, value] of formData.entries()) {
-    //   console.log({ key: value });  
-    console.log(formData);
-    dispatch(addTask(formData))
-    // }
-  }
+    dispatch(editTask(formValue));
+    handleCloseModal();
+  };
 
   return (
-    <>
+    <ReactModal
+      onRequestClose={() => {
+        handleCloseModal();
+      }}
+      contentLabel="onRequestClose"
+      shouldCloseOnOverlayClick={true}
+      isOpen={modalIsOpen}
+      className={css.editModal}
+      overlayClassName={css.editOverlay}
+      ariaHideApp={false}
+    >
       <form className={css.form} onSubmit={handleSubmit}>
+        <CloseButton className={css.closeButton} onClick={handleCloseModal} />
         <div className={css.radioList} onChange={handleChange}>
           <label>
             <input
@@ -55,7 +63,7 @@ function TransactionForm() {
               id="expense"
               name="transaction"
               value="expense"
-              defaultChecked={formData.transaction === "expense"}
+              defaultChecked={formValue.transaction === "expense"}
             />
             Expense
           </label>
@@ -65,7 +73,7 @@ function TransactionForm() {
               id="income"
               name="transaction"
               value="income"
-              defaultChecked={formData.transaction === "income"}
+              defaultChecked={formValue.transaction === "income"}
             />
             Income
           </label>
@@ -77,7 +85,8 @@ function TransactionForm() {
               type="date"
               id="date"
               name="date"
-              className={formData.date ? css.hasDate : css.placeholder}
+              value={formValue.date}
+              className={formValue.date ? css.hasDate : css.placeholder}
               onChange={handleChange}
             />
           </div>
@@ -87,7 +96,8 @@ function TransactionForm() {
               type="time"
               id="time"
               name="time"
-              className={formData.time ? css.hasTime : css.placeholder}
+              value={formValue.time}
+              className={formValue.time ? css.hasTime : css.placeholder}
               onChange={handleChange}
             />
           </div>
@@ -99,15 +109,15 @@ function TransactionForm() {
             id="category"
             name="category"
             placeholder="Different Category"
-            onClick={handleOpenModal}
-            value={formData.category}
+            onClick={OpenModal}
+            value={formValue.category}
             readOnly
           />
           <CategoriesModal
-            handleCloseModal={handleCloseModal}
-            isOpen={showModal}
+            handleCloseModal={CloseModal}
+            isOpen={inputShowModal}
             handleCategory={handleCategory}
-            transaction={formData.transaction}
+            transaction={formValue.transaction}
           />
         </div>
         <div className={css.amountContainer}>
@@ -118,7 +128,7 @@ function TransactionForm() {
               id="amount"
               name="amount"
               placeholder="Enter the sum"
-              value={formData.amount}
+              value={formValue.amount}
               onChange={handleChange}
             />
             <span className={css.currency}>UAH</span>
@@ -132,16 +142,16 @@ function TransactionForm() {
             rows=""
             cols=""
             placeholder="Enter the text"
-            value={formData.comment}
+            value={formValue.comment}
             onChange={handleChange}
           ></textarea>
         </div>
         <button type="submit" className={css.button}>
-          Add
+          Save
         </button>
       </form>
-    </>
+    </ReactModal>
   );
 }
 
-export default TransactionForm;
+export default EditFormModal;

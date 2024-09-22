@@ -11,6 +11,8 @@ export const getIncomes = (state) => state.transactions.income;
 export const getStatusFilter = (state) => state.filter.filterValue;
 // export const getStatusCalendar = (state) => state.filter.calendarValue;
 
+// export const getFindId = (state) => state.find.findId;
+
 export const getFilteredExpenses = createSelector(
   [getExpenses, getStatusFilter],
   (expenses, filter) => {
@@ -20,14 +22,22 @@ export const getFilteredExpenses = createSelector(
         expense.comment.toLowerCase().includes(filter.text.toLowerCase()) ||
         expense.amount.includes(filter.text) ||
         expense.time.includes(filter.text)
-    )
-    console.log(matchesText)
-    const matchesDate = matchesText.filter((expense) => filter.date ? expense.date === filter.date : true)
-    console.log(matchesDate)
+    );
+    console.log(matchesText);
+    const matchesDate = matchesText.filter((expense) =>
+      filter.date ? expense.date === filter.date : true
+    );
+    console.log(matchesDate);
     return matchesDate;
   }
 );
 
+// export const getFindIdExpenses = createSelector(
+//   [getExpenses, getFindId],
+//   (expenses, findId) => {
+//     return expenses.find((expense) => expense.id === findId);
+//   }
+// );
 
 export const getFilteredIncomes = createSelector(
   [getIncomes, getStatusFilter],
@@ -38,10 +48,12 @@ export const getFilteredIncomes = createSelector(
         income.comment.toLowerCase().includes(filter.text.toLowerCase()) ||
         income.amount.includes(filter.text) ||
         income.time.includes(filter.text)
-    )
-    console.log(matchesText)
-    const matchesDate = matchesText.filter((income) => filter.date ? income.date === filter.date : true)
-    console.log(matchesDate)
+    );
+    console.log(matchesText);
+    const matchesDate = matchesText.filter((income) =>
+      filter.date ? income.date === filter.date : true
+    );
+    console.log(matchesDate);
     return matchesDate;
   }
 );

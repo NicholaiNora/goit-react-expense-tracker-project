@@ -1,4 +1,4 @@
-import React, { Fragment} from "react";
+import React, { Fragment, useState} from "react";
 import TransactionsTotalAmount from "../../components/TransactionsTotalAmount/TransactionsTotalAmount";
 import css from "./IncomePage.module.css";
 import find from "../../components/images/find.svg";
@@ -7,14 +7,29 @@ import trash from "../../components/images/delete.svg";
 import { getFilteredIncomes, getStatusFilter } from "../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { setFilter } from "../../redux/filterSlice";
+import EditFormModal from "../../components/EditFormModal/EditFormModal";
+import { deleteTask } from "../../redux/transactionsSlice";
+// import { setFind } from "../../redux/findSlice";
 
 export default function IncomePage() {
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [formValue, setFormValue] = useState("")
   const filter = useSelector(getStatusFilter);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { value, name } = e.target;
     dispatch(setFilter({ value, name }));
+  };
+
+  const handleClick = (value) => {
+    setShowEditModal(true);
+    // dispatch(setFind(id))
+    setFormValue(value);
+  };
+
+  const handleCloseModal = () => {
+    setShowEditModal(false);
   };
 
   const filteredIncomes = useSelector(getFilteredIncomes);
@@ -73,13 +88,14 @@ export default function IncomePage() {
                 <div>
                   <ul className={css.tableButtonList}>
                     <li className={css.tableButtonItem}>
-                      <button className={css.editButton}>
+                      <button className={css.editButton} onClick={() => handleClick(income)}>
                         <img src={pen} alt="pen" />
                         Edit
                       </button>
+                      <EditFormModal handleCloseModal={handleCloseModal} modalIsOpen={showEditModal} formValue={formValue} setFormValue={setFormValue} />
                     </li>
                     <li>
-                      <button className={css.deleteButton}>
+                      <button className={css.deleteButton} onClick={() => dispatch(deleteTask(income))}>
                         <img src={trash} alt="delete" />
                         Delete
                       </button>
