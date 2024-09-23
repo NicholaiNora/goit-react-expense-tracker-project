@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import css from "./TransactionForm.module.css";
 import CategoriesModal from "../CategoriesModal/CategoriesModal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../../redux/transactionsSlice";
+import { getCurrency } from "../../redux/selectors";
 
 function TransactionForm() {
   // const [date, setDate] = useState("");
@@ -12,6 +13,7 @@ function TransactionForm() {
   // const [transaction, setTransaction] = useState("expense");
   const [formData, setFormData] = useState({ transaction: "expense", date: "", time: "", category: "", amount: "", comment: "" });
   const dispatch = useDispatch();
+  const currency = useSelector(getCurrency);
 
   const handleCategory = (text) => {
     setFormData({ ...formData, category: text });
@@ -121,7 +123,7 @@ function TransactionForm() {
               value={formData.amount}
               onChange={handleChange}
             />
-            <span className={css.currency}>UAH</span>
+            <span className={css.currency}>{currency.value.substring(2)}</span>
           </div>
         </div>
         <div className={css.commentContainer}>

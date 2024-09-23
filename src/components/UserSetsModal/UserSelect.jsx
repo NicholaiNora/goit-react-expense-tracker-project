@@ -1,20 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Select from "react-select";
 
-const options = [
-  { value: "₴ UAH", label: "₴ UAH" },
-  { value: "$ USD", label: "$ USD" },
-  { value: "€ EUR", label: "€ EUR" },
-];
-
-export default function UserSelect() {
-  const [selectedOption, setSelectedOption] = useState(null);
-
+function UserSelect({onChange, defaultValue, options}) {
   return (
     <>
       <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
+        defaultValue={defaultValue}
+        onChange={onChange}
         options={options}
         styles={{
           control: (baseStyles, state) => ({
@@ -123,3 +115,5 @@ export default function UserSelect() {
     </>
   );
 }
+
+export default UserSelect;

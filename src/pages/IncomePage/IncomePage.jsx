@@ -4,7 +4,7 @@ import css from "./IncomePage.module.css";
 import find from "../../components/images/find.svg";
 import pen from "../../components/images/pen.svg";
 import trash from "../../components/images/delete.svg";
-import { getFilteredIncomes, getStatusFilter } from "../../redux/selectors";
+import { getCurrency, getFilteredIncomes, getStatusFilter } from "../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { setFilter } from "../../redux/filterSlice";
 import EditFormModal from "../../components/EditFormModal/EditFormModal";
@@ -16,6 +16,7 @@ export default function IncomePage() {
   const [formValue, setFormValue] = useState("")
   const filter = useSelector(getStatusFilter);
   const dispatch = useDispatch();
+  const currency = useSelector(getCurrency);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -84,7 +85,7 @@ export default function IncomePage() {
                 <div>{income.comment}</div>
                 <div>{income.date}</div>
                 <div>{income.time}</div>
-                <div>{income.amount}</div>
+                <div>{income.amount} / {currency.value.substring(2)}</div>
                 <div>
                   <ul className={css.tableButtonList}>
                     <li className={css.tableButtonItem}>

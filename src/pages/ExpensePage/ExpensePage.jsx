@@ -4,7 +4,7 @@ import css from "./ExpensePage.module.css";
 import find from "../../components/images/find.svg";
 import pen from "../../components/images/pen.svg";
 import trash from "../../components/images/delete.svg";
-import { getStatusFilter, getFilteredExpenses } from "../../redux/selectors";
+import { getStatusFilter, getFilteredExpenses, getCurrency } from "../../redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/filterSlice";
 import EditFormModal from "../../components/EditFormModal/EditFormModal";
@@ -15,6 +15,7 @@ export default function ExpensePage() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [formValue, setFormValue] = useState("")
   const filter = useSelector(getStatusFilter);
+  const currency = useSelector(getCurrency);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -84,7 +85,7 @@ export default function ExpensePage() {
                 <div>{expense.comment}</div>
                 <div>{expense.date}</div>
                 <div>{expense.time}</div>
-                <div>{expense.amount}</div>
+                <div>{expense.amount} / {currency.value.substring(2)}</div>
                 <div>
                   <ul className={css.tableButtonList}>
                     <li className={css.tableButtonItem}>

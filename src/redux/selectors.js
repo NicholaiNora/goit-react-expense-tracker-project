@@ -12,6 +12,11 @@ export const getStatusFilter = (state) => state.filter.filterValue;
 // export const getStatusCalendar = (state) => state.filter.calendarValue;
 
 // export const getFindId = (state) => state.find.findId;
+export const getProfilePhoto = (state) => state.profile.photo;
+
+export const getProfileName = (state) => state.profile.name;
+
+export const getCurrency = (state) => state.profile.currency;
 
 export const getFilteredExpenses = createSelector(
   [getExpenses, getStatusFilter],
