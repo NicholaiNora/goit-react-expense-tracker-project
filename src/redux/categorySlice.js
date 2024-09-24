@@ -1,4 +1,6 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import persistReducer from "redux-persist/es/persistReducer";
+import storage from "redux-persist/lib/storage";
 
 const initialState = {
   categories: [],
@@ -109,4 +111,14 @@ export const {
   closeModal,
   saveTask
 } = categorySlice.actions;
-export const categoryReducer = categorySlice.reducer;
+
+const persistConfig = {
+  key: 'category',
+  storage,
+};
+
+export const categoryReducer = persistReducer(
+  persistConfig,
+  categorySlice.reducer
+);
+// export const categoryReducer = categorySlice.reducer;

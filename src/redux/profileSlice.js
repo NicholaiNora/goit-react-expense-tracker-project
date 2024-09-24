@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import avatar from "../components/images/avatar.svg";
+import storage from "redux-persist/lib/storage";
+import persistReducer from "redux-persist/es/persistReducer";
 
 const initialState = {
   photo: [avatar],
@@ -29,5 +31,15 @@ const profileSlice = createSlice({
   },
 });
 
-export const { changePhoto, changeName, changeCurrency, removePhoto} = profileSlice.actions;
-export const profileReducer = profileSlice.reducer;
+export const { changePhoto, changeName, changeCurrency, removePhoto } = profileSlice.actions;
+
+const persistConfig = {
+  key: 'profile',
+  storage,
+};
+
+export const profileReducer = persistReducer(
+  persistConfig,
+  profileSlice.reducer
+);
+// export const profileReducer = profileSlice.reducer;

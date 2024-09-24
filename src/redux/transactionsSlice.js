@@ -1,4 +1,6 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import persistReducer from "redux-persist/es/persistReducer";
+import storage from "redux-persist/lib/storage";
 
 const initialState = {
   expense: [],
@@ -111,4 +113,15 @@ export const {
   // closeModal,
   // saveTask
 } = transactionsSlice.actions;
-export const transactionsReducer = transactionsSlice.reducer;
+
+const persistConfig = {
+  key: 'transactions',
+  storage,
+};
+
+export const transactionsReducer = persistReducer(
+  persistConfig,
+  transactionsSlice.reducer
+);
+
+// export const transactionsReducer = transactionsSlice.reducer;
