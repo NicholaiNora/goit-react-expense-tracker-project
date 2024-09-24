@@ -8,12 +8,12 @@ import { Outlet } from "react-router-dom";
 export default function SharedLayoutAuth() {
   return (
     <section className={css.sectionContainer}>
-      <header className={css.container}>
-        <Logo />
-        <TransactionsHistoryNav />
-        <UserBarBtn />
-      </header>
-      <Outlet />
+          <header className={css.headerContainer}>
+            <Logo />
+            <TransactionsHistoryNav />
+            <UserBarBtn />
+          </header>
+          <Outlet />
     </section>
   );
 }

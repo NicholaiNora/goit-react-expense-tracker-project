@@ -13,7 +13,7 @@ import IncomePage from "./pages/IncomePage/IncomePage";
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       {/* <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<WelcomeHomePage />} />

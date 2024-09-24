@@ -1,5 +1,6 @@
 .wrapper {
-  padding: 60px 100px;
+  max-width: 1240px;
+  padding: 60px 0;
 }
 
 .header {
@@ -8,6 +9,7 @@
   justify-content: center;
   align-items: flex-start;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 .title {
@@ -111,17 +113,13 @@
 }
 
 .tableWrap {
-  width: 1240px;
-  min-height: 439px;
-  flex-shrink: 0;
   border-radius: 30px;
   background: #171719;
   overflow: hidden;
 }
 
 .tableContainer {
-  width: 1240px;
-  height: 349px;
+  overflow-x: auto;
 }
 
 .table {
@@ -142,6 +140,7 @@
 
 .tableData {
   display: grid;
+  width: 1240px;
   height: 290px;
   grid-template-columns: 15% 15% 15% 15% 15% auto;
   grid-template-rows: 47px 47px 47px 47px;
