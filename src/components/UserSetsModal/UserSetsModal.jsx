@@ -20,8 +20,8 @@ function UserSetsModal({ handleCloseModal, isOpen }) {
   const currency = useSelector(getCurrency);
   const userName = useSelector(getProfileName);
   const [selectedOption, setSelectedOption] = useState(currency);
-  const [profileName, setProfileName] = useState(userName);
   const fileInputRef = useRef();
+  const inputRef = useRef();
 
   const handleChange = (event) => {
     // do something with event data
@@ -36,12 +36,12 @@ function UserSetsModal({ handleCloseModal, isOpen }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(changeCurrency(selectedOption));
-    dispatch(changeName(profileName));
+    dispatch(changeName(inputRef.current.value));
     handleCloseModal();
   };
 
   const handleInputChange = (e) => {
-    setProfileName(e.target.value);
+    inputRef.current.value = e.target.value
   };
 
   const options = [
@@ -108,7 +108,8 @@ function UserSetsModal({ handleCloseModal, isOpen }) {
             className={css.input}
             placeholder="Input Name"
             name="text"
-            value={profileName}
+            ref={inputRef}
+            defaultValue={userName}
             onChange={handleInputChange}
             onFocus={e => e.target.select()}
           />
