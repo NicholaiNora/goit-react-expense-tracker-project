@@ -31,7 +31,8 @@ export const getFilteredExpenses = createSelector(
     console.log(matchesText);
     const matchesDate = matchesText.filter((expense) =>
       filter.date ? expense.date === filter.date : true
-    );
+    ).sort((a, b) =>
+      a.date.split('-').reverse().join().localeCompare(b.date.split('-').reverse().join()));
     console.log(matchesDate);
     return matchesDate;
   }
@@ -57,7 +58,8 @@ export const getFilteredIncomes = createSelector(
     console.log(matchesText);
     const matchesDate = matchesText.filter((income) =>
       filter.date ? income.date === filter.date : true
-    );
+    ).sort((a, b) =>
+      a.date.split('-').reverse().join().localeCompare(b.date.split('-').reverse().join()));;
     console.log(matchesDate);
     return matchesDate;
   }
