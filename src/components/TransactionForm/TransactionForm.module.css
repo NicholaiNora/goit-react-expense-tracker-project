@@ -1,10 +1,12 @@
 .form {
+  justify-self: center;
   width: 566px;
   height: 600px;
   flex-shrink: 0;
   border-radius: 30px;
   background: #171719;
   padding: 40px;
+  margin-left: 30px;
 }
 
 .radioList {
