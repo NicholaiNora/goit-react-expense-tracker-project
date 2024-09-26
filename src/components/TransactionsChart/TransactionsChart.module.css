@@ -1,10 +1,13 @@
 .container {
   width: 630px;
-  height: 302px;
-  flex-shrink: 0;
+  min-height: 302px;
   border-radius: 30px;
   background: #171719;
   padding: 40px;
+}
+
+@media (max-width: 767.9px) {
+  .container {width: 100%}
 }
 
 .paragraph {
@@ -32,8 +35,13 @@
 }
 .chartContainer {
   display: flex;
-  height: 150px;
+  min-height: 150px;
   gap: 41px;
+}
+
+@media (max-width: 767.9px) {
+  .chartContainer {justify-content: center;
+  flex-wrap: wrap;}
 }
 
 .chartList {

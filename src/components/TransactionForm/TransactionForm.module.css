@@ -1,12 +1,20 @@
 .form {
   justify-self: center;
   width: 566px;
-  height: 600px;
+  min-height: 600px;
   flex-shrink: 0;
   border-radius: 30px;
   background: #171719;
-  padding: 40px;
+  padding: 2.5rem;
   margin-left: 30px;
+}
+
+@media (max-width: 767.9px) {
+  .form {
+    width: 100%;
+    margin: 0;
+    padding: 2.5rem 15%;
+  }
 }
 
 .radioList {
@@ -18,10 +26,9 @@
   color: #fafafa;
 }
 
-
 .radioList input {
   accent-color: rgba(77, 194, 116, 1);
-  margin-right: 8px;  
+  margin-right: 8px;
 }
 
 .radioItem label {
@@ -35,15 +42,23 @@
 }
 
 .datetimeContainer {
+  width: 100%;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 4%;
   margin-bottom: 20px;
+}
+
+@media (max-width: 375px) {
+  .datetimeContainer {
+    flex-wrap: wrap;
+  }
 }
 
 .dateContainer,
 .timeContainer {
-  display: flex;
+  width: 50%;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
@@ -61,7 +76,7 @@
 }
 
 .dateContainer input {
-  width: 242px;
+  width: 100%;
   padding: 12px 18px;
   align-items: center;
   gap: 10px;
@@ -97,7 +112,7 @@
 }
 
 .timeContainer input {
-  width: 224px;
+  width: 100%;
   padding: 12px 18px;
   align-items: center;
   gap: 10px;
@@ -115,7 +130,7 @@
 .categoryContainer,
 .amountContainer,
 .commentContainer {
-  width: 486px;
+  width: 100%;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
