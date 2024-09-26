@@ -6,7 +6,6 @@
   border-radius: 30px;
   background: #171719;
   cursor: pointer;
-  position: relative;
 }
 
 .avatar {
@@ -112,10 +111,14 @@
 
 .wrapper {
   max-height: 56px;
+  display: none;
 }
 
 @media (max-width: 767.9px) {
   .wrapper {
-    display: none;
+    display: inline-block;
+  }
+  .dropdownList {
+    left: 0px;
   }
 }

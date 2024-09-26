@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: flex-start;
   gap: 16px;
+  display: none;
 }
 
 .item button {
@@ -29,6 +30,23 @@ button:hover {
 
 @media (max-width: 767.9px) {
   .list {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .item button {
+    color: #0c0d0d;
+    border: 1px solid rgba(12, 13, 13, 0.4);
+  }
+
+  .item button:hover{
+    color: #FAFAFA;
+    background: #0C0D0D;
   }
 }

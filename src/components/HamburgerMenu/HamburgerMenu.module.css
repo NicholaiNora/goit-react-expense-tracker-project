@@ -1,0 +1,44 @@
+.burgerContainer {
+  display: none;
+}
+
+@media (max-width: 767.9px) {
+  .burgerContainer {
+    display: inline-block;
+    background-color: #0ef387;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 385px;
+    transition: all 0.3s ease-in-out;
+    z-index: 200;
+    padding: 18px 32px;
+  }
+  .closeBar {
+    display :flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .closehamburger {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    position: relative;
+  }
+
+  .line3,
+  .line4 {
+    display: inline-block;
+    width: 30px;
+    height: 3px;
+    border-radius: 10px;
+    transform-origin: 15px;
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+    left: 14%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
