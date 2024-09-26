@@ -1,23 +1,41 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import css from "./HamburgerMenu.module.css";
 import MobileUserBarBtn from "../MobileUserBarBtn/MobileUserBarBtn";
 import MobileTransactionNav from "../MobileTransactionNav/MobileTransactionNav";
-import useClickOutside from "../MobileUserBarBtn/clickOutside";
+
 function HamburgerMenu({ open, setOpen }) {
-  const wrapperRef = useRef("menu");
-  useClickOutside(wrapperRef, () => {
-    setOpen(false);
-  });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const menuRef = useRef();
+  const modalRef = useRef();
+
+  const handleClickOutside = (event) => {
+    // If click is outside the menu and modal, close the menu
+    if (
+      menuRef.current && !menuRef.current.contains(event.target) && // Click is outside the menu
+      modalRef.current.node && !modalRef.current.node.contains(event.target) // Click is outside the modal
+    ) {
+      setOpen(false); // Close the hamburger menu
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener to detect clicks outside
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Clean up the event listener
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }); // Re-run if menu or modal state changes
 
   return (
     <div
       className={css.burgerContainer}
       style={{ transform: open ? "translateX(0)" : "translateX(100%)" }}
-      ref={wrapperRef}
+      ref={menuRef}
     >
-      <div className={css.closeBar}>
-        <MobileUserBarBtn />
-        <span
+      <span className={css.closeBar} >
+        <MobileUserBarBtn setIsModalOpen={setIsModalOpen} modalRef={modalRef} isModalOpen={isModalOpen} />
+        <div
           className={css.closehamburger}
           open={open}
           onClick={() => setOpen(!open)}
@@ -36,8 +54,8 @@ function HamburgerMenu({ open, setOpen }) {
               backgroundColor: open ? "rgba(12, 13, 13, 1)" : "#fafafa",
             }}
           />
-        </span>
-      </div>
+        </div>
+      </span>
       <MobileTransactionNav setOpen={setOpen} open={open} />
     </div>
   );

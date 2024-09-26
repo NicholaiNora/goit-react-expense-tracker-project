@@ -22,7 +22,11 @@
   }
 
   .closehamburger {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    gap: 5px;
     width: 44px;
     height: 44px;
     position: relative;
@@ -31,14 +35,10 @@
   .line3,
   .line4 {
     display: inline-block;
-    width: 30px;
+    width: 33px;
     height: 3px;
     border-radius: 10px;
-    transform-origin: 15px;
+    transform-origin: 11px;
     transition: all 0.4s ease-in-out;
-    position: absolute;
-    left: 14%;
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 }

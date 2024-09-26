@@ -4,6 +4,7 @@ import css from "./UserSetsModal.module.css";
 import { ReactComponent as CloseButton } from "../images/closeButton.svg";
 import UserSelect from "./UserSelect";
 import { useDispatch, useSelector } from "react-redux";
+//prettier-ignore
 import { getCurrency, getProfileName, getProfilePhoto } from "../../redux/selectors";
 import {
   changeCurrency,
@@ -14,7 +15,7 @@ import {
 
 // import openArrow from "../images/openarrow.svg";
 
-function UserSetsModal({ handleCloseModal, isOpen }) {
+function UserSetsModal({ handleCloseModal, isOpen, modalRef }) {
   const dispatch = useDispatch();
   const avatar = useSelector(getProfilePhoto);
   const currency = useSelector(getCurrency);
@@ -41,7 +42,7 @@ function UserSetsModal({ handleCloseModal, isOpen }) {
   };
 
   const handleInputChange = (e) => {
-    inputRef.current.value = e.target.value
+    inputRef.current.value = e.target.value;
   };
 
   const options = [
@@ -52,9 +53,8 @@ function UserSetsModal({ handleCloseModal, isOpen }) {
   ];
 
   const handleCurrency = (actionMeta) => {
-    setSelectedOption(actionMeta)
-  }
-
+    setSelectedOption(actionMeta);
+  };
   return (
     <ReactModal
       onRequestClose={() => {
@@ -66,6 +66,7 @@ function UserSetsModal({ handleCloseModal, isOpen }) {
       className={css.modal}
       overlayClassName={css.overlay}
       ariaHideApp={false}
+      ref={modalRef}
     >
       <p className={css.title}>Profile Settings</p>
       <CloseButton className={css.closeButton} onClick={handleCloseModal} />
@@ -85,7 +86,8 @@ function UserSetsModal({ handleCloseModal, isOpen }) {
             ref={fileInputRef}
             hidden
           />
-          <button type="button"
+          <button
+            type="button"
             className={css.upload}
             onClick={() => fileInputRef.current.click()}
           >
@@ -111,7 +113,7 @@ function UserSetsModal({ handleCloseModal, isOpen }) {
             ref={inputRef}
             defaultValue={userName}
             onChange={handleInputChange}
-            onFocus={e => e.target.select()}
+            onFocus={(e) => e.target.select()}
           />
           <button type="submit" className={css.save}>
             Save

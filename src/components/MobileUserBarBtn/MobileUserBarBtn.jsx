@@ -7,9 +7,8 @@ import UserSetsModal from "../UserSetsModal/UserSetsModal";
 import useClickOutside from "./clickOutside";
 import { useSelector } from "react-redux";
 import { getProfileName, getProfilePhoto } from "../../redux/selectors";
-function MobileUserBarBtn() {
+function MobileUserBarBtn({ setIsModalOpen, isModalOpen, modalRef }) {
   const [isOpen, setOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const wrapperRef = useRef("menu");
   const avatar = useSelector(getProfilePhoto);
   const userName = useSelector(getProfileName);
@@ -18,28 +17,36 @@ function MobileUserBarBtn() {
   });
 
   const handleOpenModal = () => {
-    setShowModal(true);
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setIsModalOpen(false);
   };
 
   const handleClick = () => {
     setOpen(!isOpen);
   };
-
+  
   return (
     <div className={css.wrapper} ref={wrapperRef}>
       <div className={css.dropdown} onClick={handleClick}>
-        <img src={avatar[avatar.length - 1]} alt="Profile" className={css.avatar} />
+        <img
+          src={avatar[avatar.length - 1]}
+          alt="Profile"
+          className={css.avatar}
+        />
         <p className={css.avatarName}>{userName}</p>
         <img
           src={openArrow}
           alt="Open Arrow"
           className={isOpen ? css.closeArrow : css.openArrow}
         />
-        <UserSetsModal handleCloseModal={handleCloseModal} isOpen={showModal} />
+        <UserSetsModal
+          modalRef={modalRef}
+          handleCloseModal={handleCloseModal}
+          isOpen={isModalOpen}
+        />
       </div>
       <div className={isOpen ? css.dropdownOpen : css.dropdownClose}>
         <ul className={css.dropdownList}>
