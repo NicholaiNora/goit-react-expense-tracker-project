@@ -37,7 +37,7 @@ export default function ExpensePage() {
   return (
     <div className={css.wrapper}>
       <div className={css.header}>
-        <div>
+        <div className={css.textWrapper}>
           <h2 className={css.title}>All Expense</h2>
           <p className={css.paragraph}>
             View and manage every transaction seamlessly! Your entire financial
