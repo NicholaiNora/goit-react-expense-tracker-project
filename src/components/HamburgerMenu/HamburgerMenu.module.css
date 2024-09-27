@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media (max-width: 767.9px) {
+@media (max-width: 768px) {
   .burgerContainer {
     display: inline-block;
     background-color: #0ef387;

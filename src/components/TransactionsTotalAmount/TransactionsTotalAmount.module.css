@@ -11,14 +11,6 @@
   align-items: center;
 }
 
-
-@media (max-width: 654px) {
-  .container {
-    width: 100%;
-  }
-
-}
-
 .arrowContainer {
   width: 43px;
   height: 43px;
@@ -91,12 +83,19 @@
   transform: rotate(180deg);
 }
 
-@media (max-width: 767.9px) {
+@media (max-width: 768px) {
   .wrapper {
     display: inline-flex;
     justify-content: center;
     flex-wrap: wrap;
   }
 
+}
+
+
+@media (max-width: 654px) {
+  .container {
+    width: 100%;
+  }
 }
 

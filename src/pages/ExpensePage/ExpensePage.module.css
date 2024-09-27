@@ -15,15 +15,6 @@
   width: 516px;
 }
 
-@media (max-width: 1263.9px) {
-  .header {
-    display: grid;
-    grid-template-columns: 600px;
-    gap: 40px;
-    justify-content: center;
-  }
-}
-
 .title {
   color: #fafafa;
   font-family: "Suisse Intl";
@@ -229,7 +220,16 @@
   cursor: pointer;
 }
 
-@media (max-width: 767.9px) {
+@media (max-width: 1263.9px) {
+  .header {
+    display: grid;
+    grid-template-columns: 600px;
+    gap: 40px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
   .header {
     display: grid;
     grid-template-columns: 1fr;
@@ -238,30 +238,31 @@
   .textWrapper {
     width: 100%;
   }
- 
-  .table,.tableData {
+
+  .table,
+  .tableData {
     width: 704px;
     padding: 20px 32px;
     gap: 2%;
     overflow-x: hidden;
   }
 
-  .editButton, .deleteButton {
+  .editButton,
+  .deleteButton {
     width: 47px;
     height: 47px;
-   color: transparent;
-   padding: 0;
+    color: transparent;
+    padding: 0;
   }
   .tableButtonItem {
     width: 47px;
   }
-  .tableButtonItem img{
+  .tableButtonItem img {
     top: 16px;
-    left: 16px
+    left: 16px;
   }
   .deleteButton img {
     position: relative;
     left: 14px;
   }
-
 }

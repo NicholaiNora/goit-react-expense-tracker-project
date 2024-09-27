@@ -27,7 +27,7 @@ button:hover {
   border: 1px solid #0ef387;
 }
 
-@media (max-width: 767.9px) {
+@media (max-width: 768px) {
   .list {
     display: none;
   }
