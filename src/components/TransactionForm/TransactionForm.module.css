@@ -253,8 +253,9 @@ textarea {
 }
 
 
-@media (max-width: 374px) {
-  .datetimeContainer {
-    flex-wrap: wrap;
+@media (max-width: 375px) {
+  .form {
+    padding: 2.5rem 5%;
   }
+
 }

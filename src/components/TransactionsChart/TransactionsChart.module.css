@@ -87,3 +87,12 @@
     flex-wrap: wrap;
   }
 }
+
+@media (max-width: 375px) {
+  .container {
+    padding: 2.5rem 5%;
+  }
+  .chartList {
+    width: 100%;
+  }
+}

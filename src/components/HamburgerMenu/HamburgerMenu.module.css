@@ -42,3 +42,9 @@
     transition: all 0.4s ease-in-out;
   }
 }
+
+@media (max-width: 375px) {
+  .burgerContainer {
+    width: 100%;
+  }
+}

@@ -104,6 +104,7 @@ function UserSetsModal({ handleCloseModal, isOpen, modalRef }) {
             defaultValue={currency}
             options={options}
             onChange={handleCurrency}
+            width={96}
           />
           <input
             type="text"

@@ -1,6 +1,5 @@
 .editModal {
   width: 566px;
-  height: 600px;
   flex-shrink: 0;
   border-radius: 30px;
   padding: 40px 40px 60px;
@@ -23,8 +22,7 @@
 }
 
 .form {
-    width: 566px;
-    height: 600px;
+    width: 100%;
     flex-shrink: 0;
     border-radius: 30px;
     background: #171719;
@@ -77,12 +75,13 @@
   .datetimeContainer {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 4%;
     margin-bottom: 20px;
   }
   
   .dateContainer,
   .timeContainer {
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -101,7 +100,7 @@
   }
   
   .dateContainer input {
-    width: 242px;
+    width: 100%;
     padding: 12px 18px;
     align-items: center;
     gap: 10px;
@@ -137,7 +136,7 @@
   }
   
   .timeContainer input {
-    width: 224px;
+    width: 100%;
     padding: 12px 18px;
     align-items: center;
     gap: 10px;
@@ -155,7 +154,7 @@
   .categoryContainer,
   .amountContainer,
   .commentContainer {
-    width: 486px;
+    width: 100%;
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
@@ -282,3 +281,17 @@
     background: #0ebb69;
   }
   
+
+  @media (max-width: 604px) {
+    .editModal {
+      width: 100%;
+  
+    }
+    .editOverlay {
+      padding: 5%;
+    }
+
+    .form {
+      padding: 10% 5%;
+    }
+  }

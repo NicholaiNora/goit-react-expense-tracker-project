@@ -19,3 +19,9 @@
     max-width: 704px;
   }
 }
+
+@media (max-width: 375px) {
+  .sectionContainer {
+    max-width: 335px;
+  }
+}

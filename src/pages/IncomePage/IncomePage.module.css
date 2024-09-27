@@ -40,8 +40,8 @@
   display: inline-flex;
   gap: 20px;
   justify-content: center;
-  align-items: center;
-  margin: 20px 0 20px 40px;
+  flex-wrap: wrap;
+  margin: 20px 40px 20px 40px;
 }
 
 .searchContainer {
@@ -263,6 +263,26 @@
     position: relative;
     left: 14px;
   }
+}
 
+@media (max-width: 559px) {
+  .searchInput {
+    width: 100%;
+  }
+  .searchContainer {
+    width: 100%;
+  }
+
+  .dateContainer {
+    width: 100%;
+  }
+  .dateContainer input {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  
 }
 

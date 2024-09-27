@@ -1,6 +1,5 @@
 .modal {
   width: 500px;
-  height: 477px;
   flex-shrink: 0;
   border-radius: 30px;
   padding: 40px 40px 60px;
@@ -43,7 +42,7 @@
 }
 
 .closeButton:hover path {
-  stroke: #0EF387;
+  stroke: #0ef387;
 }
 
 .avatarContainer {
@@ -95,7 +94,7 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.24px;
-  outline:none;
+  outline: none;
   border: 1px solid #29292b;
   cursor: pointer;
 }
@@ -106,17 +105,16 @@
 }
 
 .form {
-  width: 420px;
-  display: flex;
-  gap: 20px 8px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 122px 1fr;
+  column-gap: 1.5%;
+  row-gap: 8%;
 }
 
 .input {
   display: flex;
-  width: 290px;
+  width: 100%;
   height: 48px;
   padding: 12px 18px;
   align-items: center;
@@ -143,8 +141,11 @@ input:focus {
 }
 
 .save {
-  display: inline-flex;
-  padding: 14px 192px;
+  width: 100%;
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 14px 0;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -166,4 +167,14 @@ input:focus {
 .save:hover,
 .save:focus {
   background: #0ebb69;
+}
+
+@media (max-width: 540px) {
+  .modal {
+    width: 100%;
+    padding: 10% 5%;
+  }
+  .overlay {
+    padding: 5%;
+  }
 }

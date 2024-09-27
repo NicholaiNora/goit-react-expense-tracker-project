@@ -89,13 +89,16 @@
     justify-content: center;
     flex-wrap: wrap;
   }
-
+  .container {width: 340px;}
 }
 
 
-@media (max-width: 654px) {
+@media (max-width: 727px) {
   .container {
     width: 100%;
+    padding: 20px;
+    height: 81px;
+    border-radius: 20px;
   }
 }
 
