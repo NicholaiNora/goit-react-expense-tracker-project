@@ -114,14 +114,14 @@ export const {
   // saveTask
 } = transactionsSlice.actions;
 
-const persistConfig = {
-  key: 'transactions',
-  storage,
-};
+// const persistConfig = {
+//   key: 'transactions',
+//   storage,
+// };
 
-export const transactionsReducer = persistReducer(
-  persistConfig,
-  transactionsSlice.reducer
-);
+// export const transactionsReducer = persistReducer(
+//   persistConfig,
+//   transactionsSlice.reducer
+// );
 
-// export const transactionsReducer = transactionsSlice.reducer;
+export const transactionsReducer = transactionsSlice.reducer;

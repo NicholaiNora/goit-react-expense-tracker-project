@@ -3,20 +3,20 @@ import { categoryReducer } from "./categorySlice";
 import { transactionsReducer } from "./transactionsSlice";
 import { filterReducer } from "./filterSlice";
 import { profileReducer } from "./profileSlice";
-// prettier-ignore
-import {
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  persistStore,
-} from 'redux-persist';
+import { authReducer } from "./auth/authSlice";
+import storage from "redux-persist/lib/storage";
+//prettier-ignore
+import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistStore, persistReducer } from 'redux-persist';
 // import { findReducer } from "./findSlice";
+
+const authPersistConfig = {
+  key: "auth",
+  storage,
+};
 
 export const store = configureStore({
   reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
     category: categoryReducer,
     transactions: transactionsReducer,
     filter: filterReducer,
@@ -31,4 +31,4 @@ export const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store); 
+export const persistor = persistStore(store);

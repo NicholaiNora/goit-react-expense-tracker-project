@@ -5,14 +5,18 @@ import { ReactComponent as Profile } from "../images/profile.svg";
 import { ReactComponent as Logout } from "../images/logout.svg";
 import UserSetsModal from "../UserSetsModal/UserSetsModal";
 import useClickOutside from "./clickOutside";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProfileName, getProfilePhoto } from "../../redux/selectors";
+import { logOut } from "../../redux/auth/authOperations";
+
 function UserBarBtn() {
   const [isOpen, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const wrapperRef = useRef("menu");
   const avatar = useSelector(getProfilePhoto);
   const userName = useSelector(getProfileName);
+  const dispatch = useDispatch()
+
   useClickOutside(wrapperRef, () => {
     setOpen(false);
   });
@@ -28,6 +32,10 @@ function UserBarBtn() {
   const handleClick = () => {
     setOpen(!isOpen);
   };
+
+  const handleLogOut = () => {
+    dispatch(logOut())
+  }
 
   return (
     <div className={css.wrapper} ref={wrapperRef}>
@@ -47,8 +55,8 @@ function UserBarBtn() {
             <Profile className={css.dropdownIcon} />
             <p className={css.dropdownParagraph}>Profile settings</p>
           </li>
-          <li className={css.dropdownItem}>
-            <Logout className={css.dropdownIcon} />
+          <li className={css.dropdownItem} onClick={handleLogOut}>
+            <Logout className={css.dropdownIcon}/>
             <p className={css.dropdownParagraph}>Log out</p>
           </li>
         </ul>

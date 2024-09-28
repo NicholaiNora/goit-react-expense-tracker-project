@@ -8,9 +8,7 @@ import BgImageWrapper from "../BgImageWrapper/BgImageWrapper";
 export default function SharedLayout() {
   return (
     <section className={css.container}>
-
         <Logo />
-
       <div className={css.pageContainer}>
         <BgImageWrapper />
         <Outlet />

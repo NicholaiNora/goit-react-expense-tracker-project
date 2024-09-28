@@ -2,12 +2,28 @@ import React, { useState } from "react";
 import css from "./AuthForm.module.css";
 import { ReactComponent as SeenPassword } from "../images/passwordseen.svg";
 import { ReactComponent as HidePassword } from "../images/passwordhide.svg";
+import { logIn } from "../../redux/auth/authOperations";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 function AuthForm() {
+  const dispatch = useDispatch()
   const [isVisible, setVisible] = useState(false);
 
   const toggle = () => {
     setVisible(!isVisible);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      logIn({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
   };
 
   return (
@@ -19,7 +35,7 @@ function AuthForm() {
           awaits.
         </p>
       </div>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
         <div className={css.inputWrapper}>
           <label className={css.inputContainer}>
             <input
@@ -47,10 +63,10 @@ function AuthForm() {
         </div>
         <div className={css.buttonWrapper}>
           <button type="submit" className={css.button}>
-            Sign Up
+            Sign In
           </button>
           <p className={css.span}>
-            Don&#8217;t have an account? <span className={css.link}> Sign Up</span>
+            Don&#8217;t have an account? <NavLink to="/register"><span className={css.link}> Sign Up</span></NavLink>
           </p>
         </div>
       </form>
