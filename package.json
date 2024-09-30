@@ -2,6 +2,7 @@
   "name": "my-expense-tracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nicholainora.github.io/repository-name/",
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
