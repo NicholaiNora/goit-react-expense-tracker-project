@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/goit-react-expense-tracker-project/static/css/main.6a401bf3.css",
-    "main.js": "/goit-react-expense-tracker-project/static/js/main.deb23d8e.js",
+    "main.js": "/goit-react-expense-tracker-project/static/js/main.252fe329.js",
     "static/js/453.a8b4d58f.chunk.js": "/goit-react-expense-tracker-project/static/js/453.a8b4d58f.chunk.js",
     "static/media/BgImageWrapper.jpg": "/goit-react-expense-tracker-project/static/media/BgImageWrapper.58a91cda48bfcfb70d5d.jpg",
     "static/media/stack1.png": "/goit-react-expense-tracker-project/static/media/stack1.75535cbbf694a88971cf.png",
@@ -24,11 +24,11 @@
     "static/media/check.svg": "/goit-react-expense-tracker-project/static/media/check.24dfa0ba3383099c9dc5b554821ef479.svg",
     "static/media/openarrow.svg": "/goit-react-expense-tracker-project/static/media/openarrow.434cd36686a04aa6ca6d8212cd543be9.svg",
     "main.6a401bf3.css.map": "/goit-react-expense-tracker-project/static/css/main.6a401bf3.css.map",
-    "main.deb23d8e.js.map": "/goit-react-expense-tracker-project/static/js/main.deb23d8e.js.map",
+    "main.252fe329.js.map": "/goit-react-expense-tracker-project/static/js/main.252fe329.js.map",
     "453.a8b4d58f.chunk.js.map": "/goit-react-expense-tracker-project/static/js/453.a8b4d58f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6a401bf3.css",
-    "static/js/main.deb23d8e.js"
+    "static/js/main.252fe329.js"
   ]
 }
