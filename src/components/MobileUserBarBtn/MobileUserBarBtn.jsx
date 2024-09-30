@@ -7,8 +7,11 @@ import UserSetsModal from "../UserSetsModal/UserSetsModal";
 import useClickOutside from "./clickOutside";
 import { useSelector } from "react-redux";
 import { getProfileName, getProfilePhoto } from "../../redux/selectors";
+import LogOutModal from "../LogOutModal/LogOutModal";
+
 function MobileUserBarBtn({ setIsModalOpen, isModalOpen, modalRef }) {
   const [isOpen, setOpen] = useState(false);
+  const [logOutModal, setLogOutModal] = useState(false);
   const wrapperRef = useRef("menu");
   const avatar = useSelector(getProfilePhoto);
   const userName = useSelector(getProfileName);
@@ -47,6 +50,7 @@ function MobileUserBarBtn({ setIsModalOpen, isModalOpen, modalRef }) {
           handleCloseModal={handleCloseModal}
           isOpen={isModalOpen}
         />
+        <LogOutModal handleCloseModal={() => {setLogOutModal(false)}} isOpen= {logOutModal} />
       </div>
       <div className={isOpen ? css.dropdownOpen : css.dropdownClose}>
         <ul className={css.dropdownList}>
@@ -54,8 +58,8 @@ function MobileUserBarBtn({ setIsModalOpen, isModalOpen, modalRef }) {
             <Profile className={css.dropdownIcon} />
             <p className={css.dropdownParagraph}>Profile settings</p>
           </li>
-          <li className={css.dropdownItem}>
-            <Logout className={css.dropdownIcon} />
+          <li className={css.dropdownItem} onClick={() => {setLogOutModal(true)}}>
+            <Logout className={css.dropdownIcon}/>
             <p className={css.dropdownParagraph}>Log out</p>
           </li>
         </ul>

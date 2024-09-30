@@ -112,13 +112,13 @@ export const {
   saveTask
 } = categorySlice.actions;
 
-// const persistConfig = {
-//   key: 'category',
-//   storage,
-// };
+const persistConfig = {
+  key: 'category',
+  storage,
+};
 
-// export const categoryReducer = persistReducer(
-//   persistConfig,
-//   categorySlice.reducer
-// );
-export const categoryReducer = categorySlice.reducer;
+export const categoryReducer = persistReducer(
+  persistConfig,
+  categorySlice.reducer
+);
+// export const categoryReducer = categorySlice.reducer;

@@ -4,6 +4,7 @@ import CategoriesModal from "../CategoriesModal/CategoriesModal";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../../redux/transactionsSlice";
 import { getCurrency } from "../../redux/selectors";
+import { getCategories } from "../../redux/categories/categoriesOperations";
 
 function TransactionForm() {
   // const [date, setDate] = useState("");
@@ -21,6 +22,7 @@ function TransactionForm() {
 
   const handleOpenModal = () => {
     setShowModal(true);
+    dispatch(getCategories())
   };
 
   const handleCloseModal = () => {

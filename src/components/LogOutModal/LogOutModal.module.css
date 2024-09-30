@@ -1,0 +1,112 @@
+.modal {
+  width: 500px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  padding: 40px 40px 60px;
+  border: 1px solid rgba(250, 250, 250, 0.1);
+  background: #171719;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.closeButton {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.closeButton:hover path {
+  stroke: #0ef387;
+}
+
+.paragraph {
+  color: #fafafa;
+  text-align: center;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  margin-bottom: 40px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.logout {
+  display: flex;
+  padding: 14px 44px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #0ef387;
+  color: #0c0d0d;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  border: 1px solid #0ef387;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background: #0ebb69;
+}
+
+.cancel {
+  display: flex;
+  padding: 14px 44px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #29292b;
+  color: #fafafa;
+  font-family: "Suisse Intl";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  border: 1px solid #29292b;
+  cursor: pointer;
+}
+
+.cancel:hover {
+  background: #29292b;
+}
+
+@media (max-width: 540px) {
+  .modal {
+    width: 100%;
+    padding: 10% 5%;
+  }
+  .overlay {
+    padding: 5%;
+  }
+}

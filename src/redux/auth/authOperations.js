@@ -94,7 +94,7 @@ export const refreshUser = createAsyncThunk(
         sid: state.auth.user.sid  // The session ID passed in the request body
       }, {
         headers: {
-          'Authorization': `Bearer ${state.auth.user.refreshToken}`,
+          'Authorization': `Bearer ${state.auth.user.accessToken}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }

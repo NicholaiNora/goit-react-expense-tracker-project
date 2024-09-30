@@ -5,28 +5,36 @@ import { ReactComponent as CloseButton } from "../images/closeButton.svg";
 import UserSelect from "./UserSelect";
 import { useDispatch, useSelector } from "react-redux";
 //prettier-ignore
-import { getCurrency, getProfileName, getProfilePhoto } from "../../redux/selectors";
+import { getCurrency, getProfilePhoto } from "../../redux/selectors";
 import {
   changeCurrency,
   changeName,
   changePhoto,
   removePhoto,
 } from "../../redux/profileSlice";
+import { userAvatar, userInfo } from "../../redux/users/usersOperations";
+import { selectUserName } from "../../redux/users/usersSelectors";
 
 // import openArrow from "../images/openarrow.svg";
 
 function UserSetsModal({ handleCloseModal, isOpen, modalRef }) {
   const dispatch = useDispatch();
   const avatar = useSelector(getProfilePhoto);
+  const [file, setFile] = useState(null);
   const currency = useSelector(getCurrency);
-  const userName = useSelector(getProfileName);
+  const userName = useSelector(selectUserName);
   const [selectedOption, setSelectedOption] = useState(currency);
   const fileInputRef = useRef();
   const inputRef = useRef();
 
+  const fd = new FormData();
+  fd.append = ("file", file);
+  console.log(fd);
+
   const handleChange = (event) => {
     // do something with event data
     dispatch(changePhoto(event.target.value));
+    setFile(event.target.files[0]);
   };
 
   const handleRemove = () => {
@@ -36,6 +44,13 @@ function UserSetsModal({ handleCloseModal, isOpen, modalRef }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      userInfo({
+        name: inputRef.current.value,
+        currency: "usd",
+      })
+    );
+    dispatch(userAvatar(fd));
     dispatch(changeCurrency(selectedOption));
     dispatch(changeName(inputRef.current.value));
     handleCloseModal();
@@ -46,7 +61,6 @@ function UserSetsModal({ handleCloseModal, isOpen, modalRef }) {
   };
 
   const options = [
-    { value: "₱ PHP", label: "₱ PHP" },
     { value: "$ USD", label: "$ USD" },
     { value: "₴ UAH", label: "₴ UAH" },
     { value: "€ EUR", label: "€ EUR" },
@@ -82,9 +96,9 @@ function UserSetsModal({ handleCloseModal, isOpen, modalRef }) {
           <input
             type="file"
             onChange={handleChange}
-            multiple={false}
             ref={fileInputRef}
             hidden
+            accept="image/*" // Accept only image files
           />
           <button
             type="button"
@@ -99,7 +113,11 @@ function UserSetsModal({ handleCloseModal, isOpen, modalRef }) {
         </div>
       </div>
       <div className={css.inputContainer}>
-        <form className={css.form} onSubmit={handleSubmit}>
+        <form
+          className={css.form}
+          onSubmit={handleSubmit}
+          enctype="multipart/form-data"
+        >
           <UserSelect
             defaultValue={currency}
             options={options}

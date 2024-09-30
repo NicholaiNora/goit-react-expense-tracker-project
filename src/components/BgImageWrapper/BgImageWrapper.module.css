@@ -2,10 +2,8 @@
   display: block;
   width: 611px;
   height: 568px;
-  flex-shrink: 0;
+  object-fit: cover;
   border-radius: 20px;
-  background: lightgray -210.655px -9.352px / 144.403%
-    103.776% no-repeat;
 }
 
 .imageContainer {
@@ -24,7 +22,6 @@
   animation-direction: reverse;
 }
 
-
 @keyframes bounce {
   0% {
     transform: translateX(0);
@@ -37,4 +34,40 @@
   100% {
     transform: translateX(0);
   }
+}
+
+@media (max-width: 768px) {
+  .image {
+    width: 704px;
+    height: 482px;
+  }
+
+  .decorationTab {
+    left: -16px;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateX(0);
+    }
+  
+    50% {
+      transform: translateX(calc(100cqw - 100%));
+    }
+  
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .image {
+    width: 335px;
+    height: 381px;
+  }
+  .decorationTab {
+    top: 240px;
+  }
+
 }

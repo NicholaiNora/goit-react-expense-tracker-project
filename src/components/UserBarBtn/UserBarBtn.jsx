@@ -6,15 +6,18 @@ import { ReactComponent as Logout } from "../images/logout.svg";
 import UserSetsModal from "../UserSetsModal/UserSetsModal";
 import useClickOutside from "./clickOutside";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfileName, getProfilePhoto } from "../../redux/selectors";
-import { logOut } from "../../redux/auth/authOperations";
+import {  getProfilePhoto } from "../../redux/selectors";
+import { currentUser } from "../../redux/users/usersOperations";
+import { selectUserName } from "../../redux/users/usersSelectors";
+import LogOutModal from "../LogOutModal/LogOutModal";
 
 function UserBarBtn() {
   const [isOpen, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [logOutModal, setLogOutModal] = useState(false);
   const wrapperRef = useRef("menu");
   const avatar = useSelector(getProfilePhoto);
-  const userName = useSelector(getProfileName);
+  const userName = useSelector(selectUserName);
   const dispatch = useDispatch()
 
   useClickOutside(wrapperRef, () => {
@@ -31,11 +34,8 @@ function UserBarBtn() {
 
   const handleClick = () => {
     setOpen(!isOpen);
+    dispatch(currentUser());
   };
-
-  const handleLogOut = () => {
-    dispatch(logOut())
-  }
 
   return (
     <div className={css.wrapper} ref={wrapperRef}>
@@ -48,6 +48,7 @@ function UserBarBtn() {
           className={isOpen ? css.closeArrow : css.openArrow}
         />
         <UserSetsModal handleCloseModal={handleCloseModal} isOpen={showModal} />
+        <LogOutModal handleCloseModal={() => {setLogOutModal(false)}} isOpen= {logOutModal} />
       </div>
       <div className={isOpen ? css.dropdownOpen : css.dropdownClose}>
         <ul className={css.dropdownList}>
@@ -55,7 +56,7 @@ function UserBarBtn() {
             <Profile className={css.dropdownIcon} />
             <p className={css.dropdownParagraph}>Profile settings</p>
           </li>
-          <li className={css.dropdownItem} onClick={handleLogOut}>
+          <li className={css.dropdownItem} onClick={() => {setLogOutModal(true)}}>
             <Logout className={css.dropdownIcon}/>
             <p className={css.dropdownParagraph}>Log out</p>
           </li>

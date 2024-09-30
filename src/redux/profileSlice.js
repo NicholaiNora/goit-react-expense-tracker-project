@@ -7,8 +7,8 @@ const initialState = {
   photo: [avatar],
   name: "Profile Name",
   currency: {
-    value: "₱ PHP",
-    label: "₱ PHP",
+    value: "$ USD",
+    label: "$ USD",
   },
 };
 
@@ -33,13 +33,13 @@ const profileSlice = createSlice({
 
 export const { changePhoto, changeName, changeCurrency, removePhoto } = profileSlice.actions;
 
-// const persistConfig = {
-//   key: 'profile',
-//   storage,
-// };
+const persistConfig = {
+  key: 'profile',
+  storage,
+};
 
-// export const profileReducer = persistReducer(
-//   persistConfig,
-//   profileSlice.reducer
-// );
-export const profileReducer = profileSlice.reducer;
+export const profileReducer = persistReducer(
+  persistConfig,
+  profileSlice.reducer
+);
+// export const profileReducer = profileSlice.reducer;

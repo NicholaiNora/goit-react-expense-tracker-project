@@ -4,10 +4,11 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .authNavBtn {
-  width: 145px;
+  width: 100%;
   display: inline-flex;
   padding: 14px 44px;
   justify-content: center;

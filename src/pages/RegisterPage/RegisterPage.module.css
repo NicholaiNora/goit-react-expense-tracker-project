@@ -1,11 +1,23 @@
-.container {
-  width: 1440px;
-  height: 800px;
-  padding: 32px 100px 100px 100px;
-}
-
-
 .pageContainer {
+  width: 100%;
   display: flex;
   gap: 54px;
+  margin-top: 72px;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    height: 960px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .pageContainer {
+    height: 760px;
+    margin: 0;
+  }
 }
