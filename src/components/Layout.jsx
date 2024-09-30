@@ -2,7 +2,7 @@ import { AppBar } from './AppBar/AppBar';
 
 export const Layout = () => {
   return (
-    <div class="container-fluid">
+    <div className="container-fluid">
       <AppBar />
     </div>
   );

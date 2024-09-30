@@ -15,7 +15,7 @@ import {
 } from "../../redux/categorySlice";
 import { getCategory } from "../../redux/selectors";
 import useClickOutside from "../UserBarBtn/clickOutside";
-import { addCategories } from "../../redux/categories/categoriesOperations";
+// import { addCategories } from "../../redux/categories/categoriesOperations";
 
 function CategoriesModal({ handleCloseModal, isOpen, handleCategory, transaction}) {
   const dispatch = useDispatch();
